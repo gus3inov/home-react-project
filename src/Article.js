@@ -10,7 +10,8 @@ export default class Article extends Component{
 
     }
 
-    toggleOpen = () =>{
+    toggleOpen = (ev) =>{
+        ev.preventDefault()
         this.setState({
             isOpen: !this.state.isOpen
         })
@@ -27,10 +28,12 @@ export default class Article extends Component{
         const { isOpen }  = this.state
         return (
             <div>
-            <h1>{ article.title }</h1>
-            <br/>
-            <button onClick={this.toggleOpen}>open</button>
-             <section>{ this.getBody() }</section>
+                <h1>{ article.title }</h1>
+                <br/>
+                <button onClick={this.toggleOpen}> 
+                    { isOpen ? 'close' : 'open' } 
+                </button>
+                <section>{ this.getBody() }</section>
             </div>
         )
     }
