@@ -1,15 +1,13 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Article from './Article'
+import ArticleList from './ArticleList'
 import {articles} from './fixtures'
 
-const article = articles[0]
-
-function HelloWorld(){
+function App(){
     return (
         <div>
-        <Article article={article}/>
+        <ArticleList articles={articles}/>
         </div>
     );
 }
-render(<HelloWorld />, document.getElementById('container'))
+render(<App />, document.getElementById('container'))
