@@ -1,0 +1,69 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 10px 250px;
+}
+
+button{
+    background: transparent;
+    border: none;
+    color: #fff;
+    outline: 0;
+    cursor: pointer;
+}
+
+ul, li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.article-title{
+    text-align: center;
+}
+
+.article{
+    display: flex;
+    flex-direction: column;
+}
+
+.article-button{
+    align-self: flex-end;
+    background: #9900cc;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
+
+.article-comments ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.article-comments .article-button__comment{
+    align-self: center;
+    background: #ff6666;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 10px; 
+}
+
+.article-comments .article-comment__info{
+    background: #ff6666;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+}
+
+.article-comments .article-comment__info .article-comment__info_user{
+    color: #000;
+}
