@@ -1,48 +1,45 @@
 import React, { Component } from 'react'
-import Comments from './Comments'
+import CommentList from './CommentList'
 
-export default class Article extends Component{
-    constructor(props){
+export default class Article extends Component {
+    constructor(props) {
         super(props)
 
         this.state = {
             isOpen: true
         }
-
     }
 
-    toggleOpen = (ev) =>{
+    render() {
+        const {article} = this.props
+        const {isOpen} = this.state
+        return (
+            <div className="article">
+                <h2 className="article-title">{article.title}</h2>
+                <button className="article-button" onClick = {this.toggleOpen}>
+                    {isOpen ? 'close' : 'open'}
+                </button>
+                {this.getBody()}
+            </div>
+        )
+    }
+
+    getBody() {
+        if (!this.state.isOpen) return null
+        const {article} = this.props
+        return (
+            <section className="article-text">
+               {article.text}
+               <CommentList comments = {article.comments}/>
+            </section>
+        )
+    }
+
+    toggleOpen = (ev) => {
         ev.preventDefault()
+        console.log('---', ev.nativeEvent)
         this.setState({
             isOpen: !this.state.isOpen
         })
-    }
-
-    getBody = () => {
-        if( !this.state.isOpen ) return null
-        const { article } = this.props
-        return <section>{ article.text }</section>
-    }
-
-    getComment = () => {
-        const { article } = this.props
-        return <section>{ article.comments.map(({ key }) => key) }</section>
-    }
- 
-    render(){
-        const { article } = this.props
-        const { isOpen }  = this.state
-        const keyS = { article }
-        return (
-            <div>
-                <h1>{ article.title }</h1>
-                <br/>
-                <button onClick={this.toggleOpen}> 
-                    { isOpen ? 'close' : 'open' } 
-                </button>
-                <section>{ this.getBody() }</section>
-                <Comments comment={ this.getComment() }/>
-            </div>
-        )
     }
 }
