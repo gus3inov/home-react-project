@@ -26,7 +26,7 @@ export default class Article extends Component{
 
     getComment = () => {
         const { article } = this.props
-        return <section>{{ article }.map(key => Object.keys(obj))}</section>
+        return <section>{ article.comments.map(({ key }) => key) }</section>
     }
  
     render(){
@@ -41,7 +41,7 @@ export default class Article extends Component{
                     { isOpen ? 'close' : 'open' } 
                 </button>
                 <section>{ this.getBody() }</section>
-                <Comments comment={this.getComment()}/>
+                <Comments comment={ this.getComment() }/>
             </div>
         )
     }
