@@ -9,3 +9,7 @@ export default function ArticleList({ articles }){
         </ul>
     )
 }
+
+ArticleList.propTypes = {
+    articles: PropTypes.object.isRequired
+}

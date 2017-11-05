@@ -7,3 +7,10 @@ export default function Comment({comment}) {
         </div>
     )
 }
+
+ArticleList.propTypes = {
+    comment: PropTypes.shape({
+        text: PropTypes.text.isRequired,
+        user: PropTypes.text.isRequired
+    }).isRequired
+}
