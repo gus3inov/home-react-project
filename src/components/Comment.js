@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default function Comment({comment}) {
     return (
@@ -8,9 +9,9 @@ export default function Comment({comment}) {
     )
 }
 
-ArticleList.propTypes = {
+Comment.propTypes = {
     comment: PropTypes.shape({
-        text: PropTypes.text.isRequired,
-        user: PropTypes.text.isRequired
+        text: PropTypes.string.isRequired,
+        user: PropTypes.string.isRequired
     }).isRequired
 }
