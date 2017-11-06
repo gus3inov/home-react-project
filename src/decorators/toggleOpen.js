@@ -1,6 +1,12 @@
 import React, { Component as ReactComponent} from 'react'
+import PropTypes from 'prop-types'
 
 export default ( OriginalComponent ) => class WrappedComponent extends ReactComponent {
+
+    static propTypes = {
+        isOpen: PropTypes.bool.isRequired,
+    }
+
     state = {
         isOpen: false
     }

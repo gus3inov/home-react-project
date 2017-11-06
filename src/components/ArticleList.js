@@ -3,6 +3,12 @@ import Article from './Article'
 import PropTypes from 'prop-types'
 
 export default class ArticleList extends Component{
+
+    static propTypes = {
+        openArticleId: PropTypes.bool.isRequired,
+        articles: PropTypes.array.isRequired
+    }
+
     state = {
         openArticleId: null
     }
@@ -30,8 +36,4 @@ export default class ArticleList extends Component{
         })
     }
 
-}
-
-ArticleList.propTypes = {
-    articles: PropTypes.array.isRequired
 }
