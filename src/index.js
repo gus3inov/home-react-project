@@ -1,13 +1,7 @@
 import React from 'react'
-import {render} from 'react-dom'
-import ArticleList from './components/ArticleList'
-import {articles} from './fixtures'
+import { render } from 'react-dom'
+import App from './components/App'
+import { articles } from './fixtures'
 
-function App(){
-    return (
-        <div>
-        <ArticleList articles={articles}/>
-        </div>
-    );
-}
-render(<App />, document.getElementById('container'))
+
+render(<App articles = { articles }/>, document.getElementById('container'))
