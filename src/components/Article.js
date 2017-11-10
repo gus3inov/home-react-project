@@ -12,23 +12,23 @@ class Article extends Component {
         }).isRequired
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
+    // }
 
-    componentWillMount = () => {
-      console.log('---', 'mounting')
-    }
+    // componentWillMount = () => {
+    //   console.log('---', 'mounting')
+    // }
 
-    setContainerRef = ref => {
-        this.container = ref
-        console.log('---', 'ref')
-    }
+    // setContainerRef = ref => {
+    //     this.container = ref
+    //     console.log('---', 'ref')
+    // }
     
 
-    componentDidMount = () => {
-      console.log('---', 'mounted') 
-    }
+    // componentDidMount = () => {
+    //   console.log('---', 'mounted') 
+    // }
 
     render() {
         const { article, isOpen, toggleOpen } = this.props
