@@ -4,7 +4,7 @@ import ArticleList from './ArticleList'
 
 export default class App extends Component {
     static propTypes = {
-        articles: PropTypes.object.isRequired
+        articles: PropTypes.array.isRequired
     };  
 
   render() {
