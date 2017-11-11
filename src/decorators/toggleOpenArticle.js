@@ -1,14 +1,14 @@
 import React, { Component as ReactComponent} from 'react'
 import PropTypes from 'prop-types'
 
-export default ( OriginalComponent ) => class WrappedComponent extends ReactComponent {
+export default ( Component ) => class Accordion extends ReactComponent {
     state = {
         openArticleId: null
     }
 
     render(){
         return (
-        <OriginalComponent 
+        <Component 
             { ...this.props } 
             { ...this.state }
             toggleOpenArticle = { this.toggleOpenArticle }
@@ -17,9 +17,9 @@ export default ( OriginalComponent ) => class WrappedComponent extends ReactComp
        
     }
 
-    toggleOpenArticle = openArticleId =>  {
+    toggleOpenArticle = openArticleId =>  ev => {
         this.setState({
-            openArticleId
+            openArticleId: openArticleId === this.state.openArticleId ? null : openArticleId,
         })
     }
 
