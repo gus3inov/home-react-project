@@ -3,14 +3,14 @@ import Article from './Article'
 import PropTypes from 'prop-types'
 import toggleOpenArticle from '../decorators/toggleOpenArticle'
 
-function ArticleList({ openArticleId, articles }) {
+function ArticleList({ openArticleId, articles, toggleOpenArticle, isOpen }) {
 
     const articleRender = articles.map(value => 
         <li key={ value.id }>
             <Article 
                 article = { value }
-                isOpen = { value.id === value.id }
-                toggleOpen = { toggleOpenArticle }
+                isOpen = { value.id === openArticleId }
+                toggleOpen = { toggleOpenArticle(value.id) }
             />
         </li>);
 
