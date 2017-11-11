@@ -25,7 +25,7 @@ function CommentList ({ comments = [], isOpen, toggleOpen }) {
     }
 
 CommentList.propTypes = {
-    comment: PropTypes.array.isRequired,
+    comment: PropTypes.array,
     isOpen: PropTypes.bool.isRequired,
     toggleOpen: PropTypes.func.isRequired
 }
