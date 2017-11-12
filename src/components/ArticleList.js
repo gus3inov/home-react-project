@@ -16,9 +16,11 @@ function ArticleList({ openArticleId, articles, toggleOpenArticle, isOpen }) {
 
 
     return (
+        <div className = "article-list">
         <ul>
             { articleRender }
         </ul>
+        </div>
       )
 }
 
