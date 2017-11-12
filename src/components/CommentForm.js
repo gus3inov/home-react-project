@@ -25,7 +25,7 @@ export class componentName extends Component {
 
   render() {
     return (
-      <div className = "form-comment">'
+      <div className = "form-comment">
         <input 
           type = "text" 
           className = "form-comment__input" 
@@ -34,7 +34,7 @@ export class componentName extends Component {
           onChange = { this.handleInputChange }
          />
        <div>
-       <textarea 
+       <textarea    
          className = "form-comment__textarea" 
          style = { this.state.isTextAreaWrite ? { color: 'red' } : { color: '#fff' } }
          onChange = { this.handleTextAreaChange }
