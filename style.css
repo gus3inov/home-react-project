@@ -91,3 +91,51 @@ ul, li{
 .red{
     color: red;
 }
+
+.form-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 30px 0;
+}
+
+.form-comment__input{
+    width: 250px;
+    border-radius: 2px;
+    height: 30px;
+    background-color: #ff6666;
+    border: none;
+    font-size: 18px;
+    text-indent: 5px;
+    outline: 0;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.form-comment div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.form-comment .form-comment__textarea{
+    border-radius: 20px;
+    height: 110px;
+    background-color: #ff6666;
+    border: none;
+    font-size: 18px;
+    text-indent: 5px;
+    resize: none;
+    width: 100%;
+    outline: 0;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.form-comment .form-comment__button{
+    padding: 5px 10px;
+    background: #ff6666;
+    border-radius: 10px;
+    margin-left: 20px;
+}
