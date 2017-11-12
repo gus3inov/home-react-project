@@ -35,10 +35,13 @@
   "dependencies": {
     "history": "^4.6.3",
     "immutable": "^3.8.1",
+    "moment": "^2.19.2",
+    "moment-timezone": "^0.5.14",
     "prop-types": "^15.5.10",
     "react": "^15.5.0",
     "react-day-picker": "^6.0.3",
     "react-dom": "^15.5.0",
+    "react-moment": "^0.6.8",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",
