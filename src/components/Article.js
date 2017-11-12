@@ -31,7 +31,9 @@ class Article extends PureComponent {
                 <CSSTransitionGroup
                     transitionName = 'article'
                     transitionEnterTimeout = { 300 }
-                    transitionLeaveTimeout = { 300 }
+                    transitionLeaveTimeout = { 500 }
+                    transitionAppear
+                    transitionAppearTimeout = { 500 }
                 >
                 { this.getBody() }
                 </CSSTransitionGroup>
