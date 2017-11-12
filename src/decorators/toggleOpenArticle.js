@@ -2,8 +2,11 @@ import React, { Component as ReactComponent} from 'react'
 import PropTypes from 'prop-types'
 
 export default ( Component ) => class Accordion extends ReactComponent {
-    state = {
-        openArticleId: null
+    constructor(props){
+        super(props)
+        this.state = {
+            openArticleId: props.defaultOpenId
+        }
     }
 
     render(){
