@@ -2,7 +2,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: #000;
     color: #fff;
-    margin: 10px 250px;
+    margin: 10px 130px;
 }
 
 button{
@@ -66,4 +66,28 @@ ul, li{
 
 .article-comments .article-comment__info .article-comment__info_user{
     color: #000;
+}
+
+.main{
+    display: flex;
+    justify-content: space-between
+}
+
+.right-bar{
+    order: 2;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+.article-list{
+    width: 100%;
+}
+
+.date-result{
+    display: flex;
+    flex-direction: column;
+}
+
+.red{
+    color: red;
 }
