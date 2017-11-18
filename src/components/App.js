@@ -14,18 +14,16 @@ export default class App extends Component {
 
   
   render() {
-    const { articles } = this.props
-
     return (
       <div>
         <Counter />
         <UserForm />
-        <MySelect articles = { articles }/>
+        <MySelect articles = { [] }/>
         <div className = "main">
         <div className= "right-bar">
         <MyDatePicker />
         </div>
-        <ArticleList articles = { articles } defaultOpenId = { articles[0].id }/>
+        <ArticleList />
       </div>
       </div>
     )

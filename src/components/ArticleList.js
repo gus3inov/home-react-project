@@ -2,6 +2,7 @@ import React from 'react'
 import Article from './Article'
 import PropTypes from 'prop-types'
 import toggleOpenArticle from '../decorators/toggleOpenArticle'
+import { connect } from 'react-redux'
 
 function ArticleList({ openArticleId, articles, toggleOpenArticle, isOpen }) {
 
@@ -29,4 +30,4 @@ ArticleList.propTypes = {
     toggleOpenArticle: PropTypes.func.isRequired
 }
 
-export default toggleOpenArticle( ArticleList )
+export default connect(({ articles }) => ({ articles }))(toggleOpenArticle( ArticleList ))

@@ -33,18 +33,12 @@ export class Counter extends Component {
   }
 }
 
-function mapStateToProps(state){
-    return {
-        counter: state.count
-    }
-}
-
 const mapToDispatch = {
     increment,
     decrement,
     reset
 }
 
-const decorator = connect(mapStateToProps, mapToDispatch)
-
-export default decorator(Counter)
+export default connect((state) => ({ 
+    counter: state.count
+ }), mapToDispatch)(Counter)
