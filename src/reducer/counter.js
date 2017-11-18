@@ -3,6 +3,8 @@ export default (state = 0, action) => {
 
     switch ( type ){
         case 'INCREMENT': return state + 1
+        case 'DECREMENT': return state - 1
+        case 'RESET': return state = 0
     }
 
     return state;
