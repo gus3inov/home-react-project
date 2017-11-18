@@ -4,6 +4,7 @@ import UserForm from './UserForm'
 import MySelect from './Filters/MySelect'
 import ArticleList from './ArticleList'
 import MyDatePicker from './Filters/MyDatePicker'
+import Counter from './Counter'
 
 
 export default class App extends Component {
@@ -17,6 +18,7 @@ export default class App extends Component {
 
     return (
       <div>
+        <Counter />
         <UserForm />
         <MySelect articles = { articles }/>
         <div className = "main">
