@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { increment, decrement, reset } from '../AC'
 
 export class Counter extends Component {
   static propTypes = {
@@ -8,21 +9,15 @@ export class Counter extends Component {
   }
 
   handleIncrement = () =>{
-    this.props.dispatch({
-        type: 'INCREMENT'
-    })
+    this.props.increment()
   }
 
   handleDecrement = () =>{
-    this.props.dispatch({
-        type: 'DECREMENT'
-    })
+    this.props.decrement()
   }
   
   Reset = () =>{
-    this.props.dispatch({
-        type: 'RESET'
-    })
+    this.props.reset()
   }
   
 
@@ -44,6 +39,12 @@ function mapStateToProps(state){
     }
 }
 
-const decorator = connect(mapStateToProps)
+const mapToDispatch = {
+    increment,
+    decrement,
+    reset
+}
+
+const decorator = connect(mapStateToProps, mapToDispatch)
 
 export default decorator(Counter)
