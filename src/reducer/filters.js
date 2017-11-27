@@ -1,10 +1,7 @@
-import { articles } from '../fixtures'
-import { 
-    DATE_ARTICLE, 
-    SELECT_ARTICLE, 
-    INPUT_ARTICLE } from '../constance'
+import { articles as defaultArticles } from '../fixtures'
+import { SELECT_ARTICLE } from '../constance'
 
-export default (articlesState = articles, action) => {
+export default (articlesState = defaultArticles, action) => {
     const { type, payload } = action
 
     switch(type){
