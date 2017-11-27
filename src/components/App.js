@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import UserForm from './UserForm'
+import MyInput from './Filters/MyInput'
 import MySelect from './Filters/MySelect'
 import ArticleList from './ArticleList'
 import MyDatePicker from './Filters/MyDatePicker'
@@ -8,17 +8,13 @@ import Counter from './Counter'
 
 
 export default class App extends Component {
-    static propTypes = {
-        articles: PropTypes.array.isRequired
-    }
-
-  
+    
   render() {
     return (
       <div>
         <Counter />
-        <UserForm />
-        <MySelect articles = { [] }/>
+        <MyInput />
+        <MySelect />
         <div className = "main">
         <div className= "right-bar">
         <MyDatePicker />
