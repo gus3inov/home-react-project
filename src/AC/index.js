@@ -3,9 +3,9 @@ import {
     DECREMENT, 
     RESET, 
     DELETE_ARTICLE, 
-    DATE_FILTER, 
-    INPUT_FILTER, 
-    ELECT_FILTER } from '../constance'
+    DATE_ARTICLE, 
+    INPUT_ARTICLE, 
+    SELECT_ARTICLE } from '../constance'
 
 export function increment (){
     return {
@@ -25,30 +25,30 @@ export function reset (){
     }
 }
 
-export function deleteArticle (id){
+export function deleteArticle ( id ){
     return {
         type: DELETE_ARTICLE,
         payload: { id }
     }
 }
 
-export function selectFilter (id) {
+export function selectFilter ( id ) {
     return {
-        type: SELECT_FILTER,
+        type: SELECT_ARTICLE,
         payload: { id }
     }
 }
 
-export function dateFilter (id) {
+export function dateFilter ( date ) {
     return {
-        type: DATE_FILTER,
-        payload: { id }
+        type: DATE_ARTICLE,
+        payload: { date }
     }
 }
 
-export function inputFilter (id) {
+export function inputFilter ( title ) {
     return {
-        type: INPUT_FILTER,
-        payload: { id }
+        type: INPUT_ARTICLE,
+        payload: { title }
     }
 }
