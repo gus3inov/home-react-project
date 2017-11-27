@@ -4,12 +4,10 @@ import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import { DateUtils } from "react-day-picker"
 import Moment from 'react-moment'
+import { connect } from 'react-redux'
 
 
-export default class MyDatePicker extends Component {
-    static propTypes = {
-        articles: PropTypes.array.isRequired
-    };  
+class MyDatePicker extends Component {
 
     state = { 
       from: null,
@@ -70,3 +68,5 @@ export default class MyDatePicker extends Component {
   changeSelection = selection => this.setState({ selection })
 
 }
+
+export default MyDatePicker
