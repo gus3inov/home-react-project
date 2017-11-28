@@ -1,12 +1,27 @@
-import { articles as defaultArticles } from '../fixtures'
-import { SELECT_ARTICLE } from '../constance'
+import { DELETE_ARTICLE, INPUT_ARTICLE, SELECT_ARTICLE, DATE_ARTICLE } from '../constance'
 
-export default (articlesState = defaultArticles, action) => {
+const defaultFilters = {
+    selected: [],
+    dateRange: {
+        from: null,
+        to: null
+    }
+}
+
+export default (filters = defaultFilters, action) => {
     const { type, payload } = action
 
-    switch(type){
-        case SELECT_ARTICLE: return articlesState.filter(article => article.id !== payload.id)
+    switch (type) {
+        case DATE_ARTICLE:
+//            return Object.assign({}, filters, { dateRange: payload.dateRange })
+            return {...filters, dateRange: payload.date}
+
+        case SELECT_ARTICLE:
+            return {...filters, selected: payload.id}
+
+        case DELETE_ARTICLE:
+            return {...filters, selected: filters.selected.filter(id => id !== payload.id)}
     }
 
-    return articlesState
+    return filters
 }
