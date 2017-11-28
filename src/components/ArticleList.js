@@ -30,4 +30,16 @@ ArticleList.propTypes = {
     toggleOpenArticle: PropTypes.func.isRequired
 }
 
-export default connect(({ articles }) => ({ articles }))(toggleOpenArticle( ArticleList ))
+export default connect(({filters, articles}) => {
+    const {selected, dateRange: {from, to}} = filters
+
+    const filteredArticles =  articles.filter(article => {
+        const published = Date.parse(article.date)
+        return (!selected.length || selected.includes(article.id)) &&
+            (!from || !to || (published > from && published < to))
+    })
+
+    return {
+        articles: filteredArticles
+    }
+})(toggleOpenArticle(ArticleList))
