@@ -12,20 +12,23 @@ class MyInput extends Component {
     const { testScore } = this.props
     return (
       <div>
-        <input type="text" value={testScore} onChange={this.handleUserChange}/>
+        <input type="text"  onChange={this.handleUserChange}/>
       </div>
     )
   }
 
   handleUserChange = ev =>{
-      inputFilter(ev.target.value)
+    let value = ev.target.value.toLowerCase();
+    console.log(this.props.inputFilter(value))
+    this.props.inputFilter(value)
   }
 }
 
 export default connect(
-  state => ({ 
-    testScore: ''
+ state => ( {
+    testScore: state.articles
   }), {
-  inputFilter
-})(MyInput)
+    inputFilter
+  }
+)(MyInput)
 
