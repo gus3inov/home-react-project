@@ -11,28 +11,36 @@ class MySelect extends Component {
         
     }
 
-    changeSelection = () => {
-        const { deleteArticle, testScore } = this.props
-        console.log(testScore.map(article =>  article.value))
-        selectFilter(testScore.map(article =>  article.value))
-    }
+    // changeSelection = (ev) => {
+    //     let value = ev.map(key => key.value).join('');
+    //     console.log(selectFilter(value))
+    //     this.props.selectFilter(value)
+    // }
+
+    handleChange = selected => this.props.selectFilter(selected.map(option => option.value))
 
     render() {
-          console.log(this.props.testScore)
+     
+        const { articles, selected } = this.props
+        const options = articles.map(article => ({
+            label: article.title,
+            value: article.id
+        }))
+
         return (
         <div>
-            <Select options = { this.props.testScore } value = { null } onChange = { this.changeSelection } multi = { true } />
+            <Select
+            options={options}
+            value={selected}
+            multi={true}
+            onChange={this.handleChange}
+        />
         </div>
         )
     }
 }
 
-export default connect(
-    state => ({
-        testScore: state.articles.map(artilce =>({
-            label: artilce.title,
-            value: artilce.id
-          }))
-    }),
-    { selectFilter }
-)(MySelect)
+export default connect(state => ({
+    selected: state.filters.selected,
+    articles: state.articles
+}), { selectFilter })(MySelect)
