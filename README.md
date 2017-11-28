@@ -1,28 +1,27 @@
-# js_ru_08_06_17
+# React tutorial :octocat:
 
-##HT1 Реализовать список комментов для статьи, показывать/скрывать его по клику на кнопку, на которой должен меняться текст
+![N|Solid](https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-128.png)![N|Solid](https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-128.png)![N|Solid](https://cdn.iconscout.com/public/images/icon/free/png-128/gulp-company-brand-logo-328e8b9317c12a08-128x128.png)
+<img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" data-canonical-src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" width="128" height="128" />
+<img src="https://camo.githubusercontent.com/d18f4a7a64244f703efcb322bf298dcb4ca38856/68747470733a2f2f7765627061636b2e6a732e6f72672f6173736574732f69636f6e2d7371756172652d6269672e737667" data-canonical-src="https://camo.githubusercontent.com/d18f4a7a64244f703efcb322bf298dcb4ca38856/68747470733a2f2f7765627061636b2e6a732e6f72672f6173736574732f69636f6e2d7371756172652d6269672e737667" width="128" height="128" />
 
-##HT2.1 Вынести функционал аккордеона в декоратор
-##HT2.2 Добавить в него возможность закрыть статью при повторном клике
-##HT2.3 Написать для всего propTypes
+#### React tutorial - this is my home project, where I test my skills with React and Redux.
 
-##HT3.1 Подключить https://github.com/gpbl/react-day-picker с возможностью отображения промежутка дат, выводить этот промежуток на экран
-##HT3.2 Создать в CommentList форму добавления нового коммента(user, text), без самого функционала добавления
-##HT3.3 Добавить валидацию (подсвечивать красным инпут, если там < 5 или > 15 символов для имени и <20 или >50 для текста)
+### Tech
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces 
+* [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps.
+* [Webpack](https://webpack.js.org/concepts/) - At its core, webpack is a static module bundler for modern JavaScript applications.
+*  [Babel](https://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiO5tDe_OHXAhXiKJoKHbv2D5kQFggnMAA&url=https%3A%2F%2Fbabeljs.io%2F&usg=AOvVaw0h9OdJQHZ6TcgcMH6KMOX1) - Babel has support for the latest version of JavaScript through syntax transformers.
+* [node.js]() - evented I/O for the backend
+* [immutable](https://facebook.github.io/immutable-js/) - Immutable collections for JavaScript
 
-##HT4.1 Поместить состояние фильтров в стор
-##HT4.2 Реалзовать фильрацию статей(попадают в промежуток дат и выбраны в комбобоксе), если фильтр не активен - не учитывать его
 
-##HT5.1 Хранить статьи аналогично комментам(ключ-значение)
-##HT5.2 Создать мидлвару для генерации рандомных id
-##HT5.3 Реализовать функционал добавления коммента к статье
+Set dependencies and devDependencies and start the server :fire:
 
-##HT6.1 Создать Record для комментария, хранить комменты в структуре аналогичной articles
-##HT6.2 Реализовать загрузку комментов для статьи(при открытии списка), грузить один раз, показывать лоадер
+```sh
+$ cd home-react-project
+$ npm install 
+$ npm start
+```
 
-##HT7.1 Реализовать роуты для пагинаци комментов(/comments/:page)
-##HT7.2 Реализовать функционал пагианции комментов(по 5 на страницу, загружать каждую страницу только один раз), api: /api/comment?limit=5&offset=5
+**Free Software, Hell Yeah!**
 
-##HT8.1 Подготовить и прислать мне на почту список вопросов к последней встрече
-##HT8.2 Починить баг с загрузкой статьи
-##HT8.3 Реализовать локализацию, поместив словарь в контекст. С возможностью переключения языка
