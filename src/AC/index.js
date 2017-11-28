@@ -35,20 +35,20 @@ export function deleteArticle ( id ){
 export function selectFilter ( id ) {
     return {
         type: SELECT_ARTICLE,
-        payload: { id }
+        payload:  { id } 
     }
 }
 
 export function dateFilter ( date ) {
     return {
         type: DATE_ARTICLE,
-        payload: { date }
+        payload:  { date } 
     }
 }
 
-export function inputFilter ( title ) {
+export function inputFilter ( title = '') {
     return {
         type: INPUT_ARTICLE,
-        payload: { title }
+        payload: title  
     }
 }
