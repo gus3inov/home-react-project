@@ -26,5 +26,5 @@ $ npm install
 $ npm start
 ```
 
-#**:smiling_imp: Free Software, Hell Yeah! :smiling_imp:**
+# **:smiling_imp: Free Software, Hell Yeah! :smiling_imp:**
 
