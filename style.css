@@ -150,3 +150,21 @@ ul, li{
     border-radius: 10px;
     margin-left: 20px;
 }
+
+.article-search{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.article-search__input{
+    width: 600px;
+    height: 30px;
+    border: 1px solid #9900cc;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    text-indent: 10px;
+    outline: 0;
+}
