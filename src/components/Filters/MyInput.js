@@ -11,8 +11,8 @@ class MyInput extends Component {
   render() {
     const { testScore } = this.props
     return (
-      <div>
-        <input type="text"  onChange={this.handleUserChange}/>
+      <div className="article-search">
+        <input placeholder="Search" className="article-search__input" type="text"  onChange={this.handleUserChange}/>
       </div>
     )
   }
