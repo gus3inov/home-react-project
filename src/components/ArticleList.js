@@ -3,6 +3,7 @@ import Article from './Article'
 import PropTypes from 'prop-types'
 import toggleOpenArticle from '../decorators/toggleOpenArticle'
 import { connect } from 'react-redux'
+import { filtrateArticlesSelector } from '../selectors'
 
 function ArticleList({ openArticleId, articles, toggleOpenArticle, isOpen }) {
 
@@ -30,16 +31,8 @@ ArticleList.propTypes = {
     toggleOpenArticle: PropTypes.func.isRequired
 }
 
-export default connect(({filters, articles}) => {
-    const {selected, dateRange: {from, to}} = filters
-
-    const filteredArticles =  articles.filter(article => {
-        const published = Date.parse(article.date)
-        return (!selected.length || selected.includes(article.id)) &&
-            (!from || !to || (published > from && published < to))
-    })
-
+export default connect((state) => {
     return {
-        articles: filteredArticles
+        articles: filtrateArticlesSelector(state)
     }
 })(toggleOpenArticle(ArticleList))
