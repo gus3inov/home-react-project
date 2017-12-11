@@ -5,7 +5,8 @@ import {
     DELETE_ARTICLE, 
     DATE_ARTICLE, 
     INPUT_ARTICLE, 
-    SELECT_ARTICLE } from '../constance'
+    SELECT_ARTICLE,
+    ADD_COMMENT } from '../constance'
 
 export function increment (){
     return {
@@ -49,6 +50,14 @@ export function dateFilter ( date ) {
 export function inputFilter ( title = '') {
     return {
         type: INPUT_ARTICLE,
-        payload: title  
+        payload: { title  }  
+    }
+}
+
+export function addComment(comment, articleId) {
+    return {
+        type: ADD_COMMENT,
+        payload: { comment, articleId },
+        generateId: true
     }
 }
