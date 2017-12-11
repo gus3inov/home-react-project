@@ -4,6 +4,7 @@ import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 import { selectFilter } from '../../AC'
 import { connect } from 'react-redux'
+import { mapToArr } from '../../helpers'
 
 
 class MySelect extends Component {
@@ -20,7 +21,6 @@ class MySelect extends Component {
     handleChange = selected => this.props.selectFilter(selected.map(option => option.value))
 
     render() {
-     
         const { articles, selected } = this.props
         const options = articles.map(article => ({
             label: article.title,
@@ -42,5 +42,5 @@ class MySelect extends Component {
 
 export default connect(state => ({
     selected: state.filters.selected,
-    articles: state.articles
+    articles: mapToArr(state.articles)
 }), { selectFilter })(MySelect)

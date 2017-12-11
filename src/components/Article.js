@@ -11,10 +11,16 @@ import '../css/animation.css'
 class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            id: PropTypes.string
-        }).isRequired
+            text: PropTypes.string
+        }).isRequired,
+        isOpen: PropTypes.bool,
+        toggleOpen: PropTypes.func
+    }
+
+    state = {
+        updateIndex: 0
     }
 
     // shouldComponentUpdate ( nextProps, nextState ){
@@ -51,14 +57,19 @@ class Article extends PureComponent {
         console.log( deleteArticle(article.id))
     }
 
+    setCommentsRef = ref => {
+        //        console.log('---', ref)
+    }
+
     getBody() {
         const { article, isOpen } = this.props
 
         if ( !isOpen ) return null
         return (
             <section className="article-text">
+                  <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
                { article.text }
-               <CommentList comments = { article.comments }/>
+               <CommentList article = {article} ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
             </section>
         )
     }
