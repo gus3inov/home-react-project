@@ -3,7 +3,7 @@ import reducer from '../reducer'
 import logger from '../middlewares/logger'
 import randomId from '../middlewares/randomId'
 
-const enhancer = applyMiddleware(randomId, logger)
+const enhancer = applyMiddleware(randomId)
 
 const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), enhancer)
