@@ -1,38 +1,48 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Article from './Article'
 import PropTypes from 'prop-types'
 import toggleOpenArticle from '../decorators/toggleOpenArticle'
 import { connect } from 'react-redux'
 import { filtrateArticlesSelector } from '../selectors'
+import { loadAllArticles } from '../AC'
 
-function ArticleList({ openArticleId, articles, toggleOpenArticle, isOpen }) {
+class ArticleList extends Component {
+    static propTypes = {
+        articles: PropTypes.array.isRequired,
+        toggleOpenArticle: PropTypes.func.isRequired
+    }
 
-    const articleRender = articles.map(value => 
-        <li key={ value.id }>
-            <Article 
-                article = { value }
-                isOpen = { value.id === openArticleId }
-                toggleOpen = { toggleOpenArticle(value.id) }
-            />
-        </li>);
+    componentDidMount(){
+        this.props.loadAllArticles()
+    }
 
+    render(){
+        const { articles, openArticleId, toggleOpenArticle } = this.props 
 
-    return (
-        <div className = "article-list">
-        <ul>
-            { articleRender }
-        </ul>
-        </div>
-      )
-}
+        const articleRender = articles.map(value => 
+            <li key={ value.id }>
+                <Article 
+                    article = { value }
+                    isOpen = { value.id === openArticleId }
+                    toggleOpen = { toggleOpenArticle(value.id) }
+                />
+            </li>);
 
-ArticleList.propTypes = {
-    articles: PropTypes.array.isRequired,
-    toggleOpenArticle: PropTypes.func.isRequired
+        return (
+            <div className = "article-list">
+            <ul>
+                { articleRender }
+            </ul>
+            </div>
+        )
+    }
+
 }
 
 export default connect((state) => {
     return {
         articles: filtrateArticlesSelector(state)
     }
+}, {
+    loadAllArticles
 })(toggleOpenArticle(ArticleList))
