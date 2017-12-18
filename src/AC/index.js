@@ -6,7 +6,8 @@ import {
     DATE_ARTICLE, 
     INPUT_ARTICLE, 
     SELECT_ARTICLE,
-    ADD_COMMENT } from '../constance'
+    ADD_COMMENT,
+    LOAD_ALL_ARTICLES } from '../constance'
 
 export function increment (){
     return {
@@ -59,5 +60,12 @@ export function addComment(comment, articleId) {
         type: ADD_COMMENT,
         payload: { comment, articleId },
         generateId: true
+    }
+}
+
+export function loadAllArticles (){
+    return {
+        type: LOAD_ALL_ARTICLES,
+        callAPI: '/api/article'
     }
 }
