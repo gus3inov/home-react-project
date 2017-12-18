@@ -9,3 +9,5 @@ export const SELECT_ARTICLE = 'SELECT_ARTICLE'
 export const DATE_ARTICLE = 'DATE_ARTICLE'
 
 export const ADD_COMMENT = 'ADD_COMMENT'
+
+export const LOAD_ALL_ARTICLES = 'LOAD_ALL_ARTICLES'
