@@ -1,11 +1,11 @@
 import { normalizedArticles as defaultArticles } from '../fixtures'
-import { DELETE_ARTICLE, ADD_COMMENT } from '../constance'
+import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES } from '../constance'
 import { arrToMap } from '../helpers'
 
 const articleMap = arrToMap(defaultArticles)
 
-export default (articlesState = articleMap, action) => {
-    const { type, payload, randomId } = action
+export default (articlesState = {  }, action) => {
+    const { type, payload, response, randomId } = action
 
     switch(type){
         case DELETE_ARTICLE:
@@ -22,6 +22,9 @@ export default (articlesState = articleMap, action) => {
                     comments: (article.comments || []).concat(randomId)
                 }
             }
+            
+        case LOAD_ALL_ARTICLES:
+            return arrToMap(response)
     }
 
     return articlesState
