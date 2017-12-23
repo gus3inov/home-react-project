@@ -1,4 +1,4 @@
-# React tutorial :octocat:
+# React Blog :octocat:
 
 ![N|Solid](https://cdn2.iconfinder.com/data/icons/designer-skills/128/code-programming-javascript-software-develop-command-language-128.png)![N|Solid](https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-128.png)
 <img src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" data-canonical-src="https://raw.githubusercontent.com/reactjs/redux/master/logo/logo.png" width="128" height="128" />
