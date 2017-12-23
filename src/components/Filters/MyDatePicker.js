@@ -9,23 +9,36 @@ import { dateFilter } from '../../AC'
 
 
 class MyDatePicker extends Component {
+    state = {
+        dateOpen: false
+    }
 
-  handleDayClick = (day) => {
-    const { dateFilter, range } = this.props
-    dateFilter(DateUtils.addDayToRange(day, range))
-}
+    handleDayClick = (day) => {
+        const { dateFilter, range } = this.props
+        dateFilter(DateUtils.addDayToRange(day, range))
+    }
+
+    toggleDate = () => {
+        this.setState({
+            dateOpen: !this.state.dateOpen
+        })
+    }
 
     render() {
       const { from, to } = this.props.range;
       const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`
       return (
-          <div className="date-range">
-              <DayPicker
-                  ref="daypicker"
-                  selectedDays={ day => DateUtils.isDayInRange(day, { from, to }) }
-                  onDayClick={ this.handleDayClick }
-              />
-              {selectedRange}
+          <div className={'wrapper-date'}>
+              <button onClick={this.toggleDate} id="openDate"><i className="fa fa-calendar" aria-hidden="true"></i>
+              </button>
+              <div className={`date-picker ${this.state.dateOpen ? 'open' : 'close'}`}>
+                  <DayPicker
+                      ref="daypicker"
+                      selectedDays={ day => DateUtils.isDayInRange(day, { from, to }) }
+                      onDayClick={ this.handleDayClick }
+                  />
+                  {selectedRange}
+              </div>
           </div>
       );
   }
