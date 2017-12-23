@@ -5,6 +5,12 @@ body{
     margin: 10px 130px;
 }
 
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 button{
     background: transparent;
     border: none;
@@ -168,4 +174,77 @@ ul, li{
     text-indent: 10px;
     outline: 0;
     box-shadow: 0 0 50px #9900cc
+}
+
+#openDate{
+    display: none;
+}
+
+@media only screen and (max-width: 480px) {
+    body{
+        margin: 10px;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .article-comments .article-comment__info {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-comment div {
+        flex-direction: column;
+    }
+
+    .form-comment .form-comment__button {
+        margin-top: 20px;
+    }
+
+    .form-comment__input {
+        width: 100%;
+    }
+
+    .article-comment__info p{
+        font-size: 12px;
+    }
+
+    .right-bar {
+        order: 1;
+        margin: 0;
+    }
+
+    #openDate{
+        display: block;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        font-size: 30px;
+        background-color: #3f0753;
+        color: #9900cc;
+        border-radius: 50%;
+        padding: 10px 15px ;
+        z-index: 1000;
+    }
+
+    .main .right-bar .date-picker{
+        position: fixed;
+        top: 20%;
+        background-color: #000;
+        transition: all 0.32s;
+    }
+
+    .main .right-bar .date-picker.close{
+        transform: translateX(-1000px);
+    }
+
+    .main .right-bar .date-picker.open{
+        transform: translateX(0);
+    }
+
+    .wrapper-date{
+        display: flex;
+        justify-content: center;
+    }
 }
