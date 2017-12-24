@@ -42,5 +42,5 @@ class MySelect extends Component {
 
 export default connect(state => ({
     selected: state.filters.selected,
-    articles: mapToArr(state.articles)
+    articles: mapToArr(state.articles.entities)
 }), { selectFilter })(MySelect)
