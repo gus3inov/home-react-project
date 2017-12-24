@@ -5,6 +5,7 @@ import toggleOpenArticle from '../decorators/toggleOpenArticle'
 import { connect } from 'react-redux'
 import { filtrateArticlesSelector } from '../selectors'
 import { loadAllArticles } from '../AC'
+import Loader from './Loader'
 
 class ArticleList extends Component {
     static propTypes = {
@@ -13,12 +14,14 @@ class ArticleList extends Component {
     }
 
     componentDidMount(){
-        this.props.loadAllArticles()
+        const { loaded, loading, loadAllArticles } = this.props
+        if(!loading || !loaded) loadAllArticles()
+        console.log(loading, loaded);
     }
 
     render(){
-        const { articles, openArticleId, toggleOpenArticle } = this.props 
-
+        const { articles, openArticleId, toggleOpenArticle, loading } = this.props 
+        if(loading) return <Loader />
         const articleRender = articles.map(value => 
             <li key={ value.id }>
                 <Article 
@@ -41,7 +44,9 @@ class ArticleList extends Component {
 
 export default connect((state) => {
     return {
-        articles: filtrateArticlesSelector(state)
+        articles: filtrateArticlesSelector(state),
+        loading: state.articles.loading,
+        loaded: state.articles.loaded
     }
 }, {
     loadAllArticles
