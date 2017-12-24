@@ -6,6 +6,7 @@ import CommentList from './CommentList'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { deleteArticle } from '../AC'
 import { loadArticle } from '../AC'
+import Loader from './Loader'
 import '../css/animation.css'
 
 
@@ -67,9 +68,10 @@ class Article extends PureComponent {
     }
 
     getBody() {
-        const { article, isOpen } = this.props
+        const { article, isOpen} = this.props
 
         if ( !isOpen ) return null
+        if (article.loading) return <Loader/>
         return (
             <section className="article-text">
                   <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
