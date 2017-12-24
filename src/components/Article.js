@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import CommentList from './CommentList'
 import { CSSTransitionGroup } from 'react-transition-group'
 import { deleteArticle } from '../AC'
+import { loadArticle } from '../AC'
 import '../css/animation.css'
 
 
@@ -21,6 +22,10 @@ class Article extends PureComponent {
 
     state = {
         updateIndex: 0
+    }
+
+    componentWillReceiveProps({ isOpen, loadArticle, article }){
+        if(isOpen && !article.text && !article.loading) loadArticle(article.id)
     }
 
     // shouldComponentUpdate ( nextProps, nextState ){
@@ -75,4 +80,4 @@ class Article extends PureComponent {
     }
 }
 
-export default connect(null, { deleteArticle })(Article)
+export default connect(null, { loadArticle, deleteArticle })(Article)
