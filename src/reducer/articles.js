@@ -1,19 +1,13 @@
 import { normalizedArticles as defaultArticles } from '../fixtures'
 import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE } from '../constance'
-import { arrToMap } from '../helpers'
-import {Map, Record, OrderedMap} from 'immutable'
+import { arrToMap, ReducerState } from '../helpers'
+import { Record, OrderedMap } from 'immutable'
 
 const articleRecord = Record({
-    text: undefined,
     title: '',
+    text: undefined,
     id: undefined,
     comments: []
-})
-
-const ReducerState = Record({
-    loading: false,
-    loaded: false,
-    entities: new OrderedMap({})
 })
 
 const defaultState = new ReducerState()
