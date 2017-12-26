@@ -11,7 +11,9 @@ import {
     LOAD_ARTICLE,
     START,
     FAIL,
-    SUCCESS } from '../constance'
+    SUCCESS,
+    LOAD_COMMENT
+    } from '../constance'
 
 export function increment (){
     return {
@@ -93,6 +95,13 @@ export function loadArticle(id){
                     payload: { id, error }
                 }))
         })
+    }
+}
+
+export function loadComment (id){
+    return {
+        type: LOAD_COMMENT + START,
+        payload: { id }
     }
 }
 
