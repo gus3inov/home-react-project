@@ -1,13 +1,17 @@
 import { normalizedComments as defaultComments } from '../fixtures'
 import { ADD_COMMENT, LOAD_COMMENT, START, FAIL, SUCCESS } from '../constance'
-import { arrToMap } from '../helpers'
+import { arrToMap, ReducerState } from '../helpers'
 import {Map, Record, OrderedMap} from 'immutable'
 
 const commentRecord = Record({
-
+    id: undefined,
+    title: '',
+    text: undefined
 })
 
-export default (commentsState = commentMap, action) => {
+const defaultState = new ReducerState()
+
+export default (commentsState = defaultState, action) => {
     const { type, payload, randomId } = action
 
     switch(type){
@@ -15,7 +19,13 @@ export default (commentsState = commentMap, action) => {
             return {...commentsState, [randomId]: payload.comment}
 
         case LOAD_COMMENT + START:
-                return
+                return commentsState.setIn(['entities', payload.id], new commentRecord(payload.response))
+
+        case LOAD_COMMENT + SUCCESS:
+                return commentsState
+                            .set('entities', arrToMap(response, commentRecord))
+                            .set('loading', false)
+                            .set('loaded', true)
     }
 
     return commentsState
