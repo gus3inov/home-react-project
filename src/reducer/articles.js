@@ -1,7 +1,7 @@
 import { normalizedArticles as defaultArticles } from '../fixtures'
 import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE } from '../constance'
 import { arrToMap, ReducerState } from '../helpers'
-import { Record, OrderedMap } from 'immutable'
+import { Record } from 'immutable'
 
 const articleRecord = Record({
     title: '',
@@ -45,7 +45,8 @@ export default (articlesState = defaultState, action) => {
                 ], true)
 
         case LOAD_ARTICLE + SUCCESS:
-                return articleState.setIn(['entities', payload.id], new articleRecord(payload.response))
+                return articlesState.setIn(['entities', payload.id], new articleRecord(payload.response))
+                    console.log(payload.article)
     }
 
     return articlesState

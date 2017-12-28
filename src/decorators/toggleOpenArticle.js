@@ -1,5 +1,5 @@
 import React, { Component as ReactComponent} from 'react'
-import PropTypes from 'prop-types'
+
 
 export default ( Component ) => class Accordion extends ReactComponent {
     constructor(props){
@@ -20,9 +20,9 @@ export default ( Component ) => class Accordion extends ReactComponent {
        
     }
 
-    toggleOpenArticle = openArticleId =>  ev => {
+    toggleOpenArticle = openArticleId => ev => {
         this.setState({
-            openArticleId: openArticleId === this.state.openArticleId ? null : openArticleId,
+            openArticleId: openArticleId === this.state.openArticleId ? null : openArticleId
         })
     }
 

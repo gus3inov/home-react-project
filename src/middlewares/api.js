@@ -2,6 +2,7 @@ import { START, SUCCESS, FAIL } from '../constance'
 
 export default store => next => action => {
     const { callAPI, type, ...rest } = action
+
     if (!callAPI) return next(action)
 
     next({

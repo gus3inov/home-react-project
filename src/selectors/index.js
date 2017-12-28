@@ -7,8 +7,8 @@ const commentsGetter = state => state.comments
 const idGetter = (state, props) => props.id
 
 
-export const filtrateArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters)=>{
-    const {selected, dateRange: {from, to}} = filters
+export const filtrateArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters)=> {
+    const { selected, dateRange: {from, to} } = filters
    
         return mapToArr(articles).filter(article => {
             const published = Date.parse(article.date)

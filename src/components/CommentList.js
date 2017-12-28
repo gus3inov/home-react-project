@@ -3,7 +3,7 @@ import Comment from './Comment'
 import PropTypes from 'prop-types'
 import toggleOpen from '../decorators/toggleOpen'
 import CommentForm from './CommentForm'
-import { loadArticle } from "../AC";
+import { loadComments } from "../AC";
 import Loader from './Loader'
 import { connect } from 'react-redux'
 
@@ -14,14 +14,22 @@ class CommentList extends PureComponent {
         toggleOpen: PropTypes.func.isRequired
     }
 
+    componentDidMount(){
+        const { loaded, loading, loadComments } = this.props
+        if(!loading || !loaded) loadComments()
+    }
+
     getBody = () => {
-        const {article: {comments = [], id}, isOpen} = this.props
+        const { articleId, comments, isOpen } = this.props
+
+        console.log(comments)
+
         if (!isOpen) return null
         if (!comments.length) {
             return (
                 <div>
                     <p>No comments yet</p>
-                    <CommentForm articleId={id}/>
+                    <CommentForm articleId={ articleId }/>
                 </div>
             )
         }else {
@@ -37,11 +45,10 @@ class CommentList extends PureComponent {
     }
 
     render(){
-        const { isOpen, toggleOpen, article } = this.props
+        const { isOpen, toggleOpen, loading, article } = this.props
         const text = isOpen ? 'hide comments' : 'show comments'
 
-
-
+        if(loading) return <Loader/>
         return (
             <div className="article-comments">
                 <button className="article-button__comment" onClick = {toggleOpen}>{text}</button>
@@ -51,4 +58,10 @@ class CommentList extends PureComponent {
     }
 }
 
-export default connect(null, { loadArticle })(toggleOpen(CommentList))
+export default connect(state => {
+   return {
+       loading: state.comments.loading,
+       loaded: state.comments.loaded,
+       comments: state.comments
+   }
+}, { loadComments })(toggleOpen(CommentList))

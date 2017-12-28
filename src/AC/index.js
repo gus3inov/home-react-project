@@ -12,7 +12,7 @@ import {
     START,
     FAIL,
     SUCCESS,
-    LOAD_COMMENT
+    LOAD_COMMENTS
     } from '../constance'
 
 export function increment (){
@@ -98,9 +98,9 @@ export function loadArticle(id){
     }
 }
 
-export function loadComment (id){
+export function loadComments (id){
     return {
-        type: LOAD_COMMENT + START,
+        type: LOAD_COMMENTS + START,
         payload: { id }
     }
 }

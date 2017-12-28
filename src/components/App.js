@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import MyInput from './Filters/MyInput'
 import MySelect from './Filters/MySelect'
 import ArticleList from './ArticleList'
