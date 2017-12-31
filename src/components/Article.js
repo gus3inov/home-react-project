@@ -26,7 +26,7 @@ class Article extends PureComponent {
     }
 
     componentWillReceiveProps({ isOpen, loadArticle, article }){
-        if(isOpen && !article.text && !article.loading) loadArticle(article.id)
+        if(isOpen && !article.text && !article.loading) loadArticle(article.id);
     }
 
     // shouldComponentUpdate ( nextProps, nextState ){
@@ -77,7 +77,7 @@ class Article extends PureComponent {
             <section className="article-text">
                   <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
                { article.text }
-               <CommentList articleId = { article.comments } ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
+               <CommentList articleId = { article.id } ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
             </section>
         )
     }
