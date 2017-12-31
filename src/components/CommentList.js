@@ -6,6 +6,7 @@ import CommentForm from './CommentForm'
 import { loadComments } from "../AC";
 import Loader from './Loader'
 import { connect } from 'react-redux'
+import {mapToArr} from '../helpers'
 
 class CommentList extends PureComponent {
     static propTypes = {
@@ -15,15 +16,14 @@ class CommentList extends PureComponent {
     }
 
     componentDidMount(){
-        const { loaded, loading, loadComments } = this.props
-        if(!loading || !loaded) loadComments()
+        const { loaded, loading, loadComments, isOpen, articleId } = this.props
+        if(!loading || !loaded) loadComments(articleId)
     }
 
     getBody = () => {
-        const { articleId, comments, isOpen } = this.props
-
-        console.log(comments)
-
+        const { articleId, loading, comments, isOpen } = this.props
+        
+        if(loading) return <Loader/>
         if (!isOpen) return null
         if (!comments.length) {
             return (
@@ -36,19 +36,18 @@ class CommentList extends PureComponent {
             return (
                 <div>
                     <ul>
-                        {comments.map(id => <li key={id}><Comment id = {id}/></li>)}
+                        {comments.map(value => <li key={value.id}><Comment id = {value.id}/></li>)}
                     </ul>
-                    <CommentForm articleId = {id} />
+                    <CommentForm articleId = { articleId} />
                 </div>
             )
         }
     }
 
     render(){
-        const { isOpen, toggleOpen, loading, article } = this.props
+        const { isOpen, toggleOpen, article } = this.props
         const text = isOpen ? 'hide comments' : 'show comments'
 
-        if(loading) return <Loader/>
         return (
             <div className="article-comments">
                 <button className="article-button__comment" onClick = {toggleOpen}>{text}</button>
@@ -62,6 +61,6 @@ export default connect(state => {
    return {
        loading: state.comments.loading,
        loaded: state.comments.loaded,
-       comments: state.comments
+       comments: mapToArr(state.comments.entities)
    }
 }, { loadComments })(toggleOpen(CommentList))
