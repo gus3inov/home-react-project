@@ -85,7 +85,7 @@ export function loadArticle(id){
 
         setTimeout(()=>{
             fetch(`/api/article/${id}`)
-                .then(res => res.json)
+                .then(res => res.json())
                 .then(response => dispatch({
                     type: LOAD_ARTICLE + SUCCESS,
                     payload: { id, response }
@@ -100,8 +100,9 @@ export function loadArticle(id){
 
 export function loadComments (id){
     return {
-        type: LOAD_COMMENTS + START,
-        payload: { id }
+        type: LOAD_COMMENTS,
+        payload: { id },
+        callAPI: `/api/comment?article=${id}`
     }
 }
 
