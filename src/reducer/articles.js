@@ -1,13 +1,22 @@
 import { normalizedArticles as defaultArticles } from '../fixtures'
-import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE } from '../constance'
-import { arrToMap, ReducerState } from '../helpers'
-import { Record } from 'immutable'
+import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE, LOAD_COMMENTS } from '../constance'
+import { arrToMap } from '../helpers'
+import { Record, OrderedMap } from 'immutable'
 
-const articleRecord = Record({
-    title: '',
+const ArticleRecord = Record({
     text: undefined,
+    title: '',
     id: undefined,
+    loading: false,
+    commentsLoading: false,
+    commentsLoaded: false,
     comments: []
+})
+
+const ReducerState = Record({
+    loading: false,
+    loaded: false,
+    entities: new OrderedMap({})
 })
 
 const defaultState = new ReducerState()
@@ -33,7 +42,7 @@ export default (articlesState = defaultState, action) => {
 
         case LOAD_ALL_ARTICLES + SUCCESS:
             return articlesState
-                .set('entities', arrToMap(response, articleRecord))
+                .set('entities', arrToMap(response, ArticleRecord))
                 .set('loading', false)
                 .set('loaded', true)
         
@@ -45,8 +54,15 @@ export default (articlesState = defaultState, action) => {
                 ], true)
 
         case LOAD_ARTICLE + SUCCESS:
-                return articlesState.setIn(['entities', payload.id], new articleRecord(payload.response))
-                    console.log(payload.article)
+                return articlesState.setIn(['entities', payload.id], new ArticleRecord(payload.response))
+
+        case LOAD_COMMENTS + START:
+                return articlesState.setIn(['entities', payload.id, 'commentsLoading'], true)
+
+        case LOAD_COMMENTS + SUCCESS:
+                return articlesState
+                    .setIn(['entities', payload.id, 'commentsLoading'], false)
+                    .setIn(['entities', payload.id, 'commentsLoaded'], true)
     }
 
     return articlesState
