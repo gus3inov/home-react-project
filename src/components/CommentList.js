@@ -15,33 +15,32 @@ class CommentList extends PureComponent {
         toggleOpen: PropTypes.func.isRequired
     }
 
-    componentDidMount(){
-        const { loaded, loading, loadComments, isOpen, articleId } = this.props
-        if(!loading || !loaded) loadComments(articleId)
+    componentWillReceiveProps({ isOpen, article, loadComments }) {
+        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article)    
     }
 
     getBody = () => {
-        const { articleId, loading, comments, isOpen } = this.props
-        
-        if(loading) return <Loader/>
+        const {article: {comments = [], id, commentsLoaded, commentsLoading}, isOpen} = this.props
+     console.log(comments)
         if (!isOpen) return null
-        if (!comments.length) {
-            return (
-                <div>
-                    <p>No comments yet</p>
-                    <CommentForm articleId={ articleId }/>
-                </div>
-            )
-        }else {
-            return (
-                <div>
-                    <ul>
-                        {comments.map(value => <li key={value.id}><Comment id = {value.id}/></li>)}
-                    </ul>
-                    <CommentForm articleId = { articleId} />
-                </div>
-            )
-        }
+        if (commentsLoading) return <Loader />
+        if (!commentsLoaded) return null
+    
+        if (!comments.length) return (
+            <div>
+                <p>No comments yet</p>
+                <CommentForm articleId = {id} />
+            </div>
+        )
+    
+        return (
+            <div>
+                <ul>
+                    {comments.map(id => <li key={id}><Comment id = {id}/></li>)}
+                </ul>
+                <CommentForm articleId = {id} />
+            </div>
+        )
     }
 
     render(){
@@ -57,10 +56,4 @@ class CommentList extends PureComponent {
     }
 }
 
-export default connect(state => {
-   return {
-       loading: state.comments.loading,
-       loaded: state.comments.loaded,
-       comments: mapToArr(state.comments.entities)
-   }
-}, { loadComments })(toggleOpen(CommentList))
+export default connect(null, { loadComments })(toggleOpen(CommentList))
