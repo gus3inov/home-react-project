@@ -7,7 +7,7 @@ export class CommentForm extends Component {
   static propTypes = {
     articleId: PropTypes.string.isRequired,
     addComment: PropTypes.func.isRequired
-};
+  };
 
   state = {
     isInputWrite: false,
@@ -27,23 +27,21 @@ export class CommentForm extends Component {
           user: '',
           text: ''
       })    
-  }
+    }
 
   handleInputChange = ev => {
-    console.log(this.state.isInputWrite)
     this.setState({
         user: ev.target.value,
         isInputWrite: ev.target.value.length >= 5 && ev.target.value.length <= 15 ? true : false
     })
-  }
+    }
   
   handleTextAreaChange = ev => {
-    console.log(this.state.isTextAreaWrite)
     this.setState({
         text: ev.target.value,
         isTextAreaWrite: ev.target.value.length >= 20 && ev.target.value.length <= 200 ? true : false
     })
-  }
+   }
 
   render() {
     return (

@@ -46,7 +46,7 @@ class CommentList extends PureComponent {
     render(){
         const { isOpen, toggleOpen, article } = this.props
         const text = isOpen ? 'hide comments' : 'show comments'
-        console.log(article)
+        
         return (
             <div className="article-comments">
                 <button className="article-button__comment" onClick = {toggleOpen}>{text}</button>

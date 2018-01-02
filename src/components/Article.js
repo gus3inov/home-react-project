@@ -28,11 +28,7 @@ class Article extends PureComponent {
     componentWillReceiveProps({ isOpen, loadArticle, article }){
         if(isOpen && !article.text && !article.loading) loadArticle(article.id);
     }
-
-    // shouldComponentUpdate ( nextProps, nextState ){
-    //     return nextProps.isOpen !== this.props.isOpen
-    // }
-
+    
     render() {
         const { article, isOpen, toggleOpen } = this.props
         return (
@@ -60,14 +56,9 @@ class Article extends PureComponent {
     handleDelete = () =>{
         const { deleteArticle, article } = this.props
         deleteArticle(article.id)
-        console.log( deleteArticle(article.id))
-    }
+      }
 
-    setCommentsRef = ref => {
-        //        console.log('---', ref)
-    }
-
-    getBody() {
+      getBody() {
         const { article, isOpen} = this.props
         
         if ( !isOpen ) return null

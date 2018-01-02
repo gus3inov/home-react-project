@@ -1,5 +1,4 @@
-import { normalizedComments as defaultComments } from '../fixtures'
-import { ADD_COMMENT, LOAD_COMMENTS, START, FAIL, SUCCESS } from '../constance'
+import { ADD_COMMENT, LOAD_COMMENTS, SUCCESS } from '../constance'
 import { arrToMap } from '../helpers'
 import { Record, OrderedMap } from 'immutable'
 
