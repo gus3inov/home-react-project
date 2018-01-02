@@ -23,7 +23,7 @@ export class Counter extends Component {
 
   render() {
     return (
-      <div style={{ display: 'none' }}>
+      <div>
         <h2>{ this.props.counter }</h2>
         <button onClick = { this.handleIncrement }>Increment me</button>
         <button onClick = { this.handleDecrement }>Decrement me</button>
