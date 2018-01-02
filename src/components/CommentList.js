@@ -16,23 +16,23 @@ class CommentList extends PureComponent {
     }
 
     componentWillReceiveProps({ isOpen, article, loadComments }) {
-        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article)    
+        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article.id)    
     }
 
     getBody = () => {
         const {article: {comments = [], id, commentsLoaded, commentsLoading}, isOpen} = this.props
-     console.log(comments)
+            
         if (!isOpen) return null
         if (commentsLoading) return <Loader />
         if (!commentsLoaded) return null
-    
+        
         if (!comments.length) return (
             <div>
                 <p>No comments yet</p>
                 <CommentForm articleId = {id} />
             </div>
         )
-    
+        
         return (
             <div>
                 <ul>
@@ -46,7 +46,7 @@ class CommentList extends PureComponent {
     render(){
         const { isOpen, toggleOpen, article } = this.props
         const text = isOpen ? 'hide comments' : 'show comments'
-
+        console.log(article)
         return (
             <div className="article-comments">
                 <button className="article-button__comment" onClick = {toggleOpen}>{text}</button>
