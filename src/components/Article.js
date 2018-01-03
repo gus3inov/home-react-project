@@ -12,6 +12,7 @@ import '../css/animation.css'
 
 class Article extends PureComponent {
     static propTypes = {
+        id: PropTypes.string,
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
@@ -25,12 +26,14 @@ class Article extends PureComponent {
         updateIndex: 0
     }
 
-    componentWillReceiveProps({ isOpen, loadArticle, article }){
-        if(isOpen && !article.text && !article.loading) loadArticle(article.id);
+    componentDidMount(){
+        const { loadArticle, article, id } = this.props
+        if(!article || (!article.text && !article.loading)) loadArticle(id);
     }
     
     render() {
         const { article, isOpen, toggleOpen } = this.props
+        if(!article) return null
         return (
             <div className="article" ref = {this.setContainerRef}>
                 <h2 className="article-title">{ article.title }</h2>
@@ -73,4 +76,6 @@ class Article extends PureComponent {
     }
 }
 
-export default connect(null, { loadArticle, deleteArticle })(Article)
+export default connect((state, ownProps) => ({
+    article: state.articles.entities.get(ownProps.id)
+}), { loadArticle, deleteArticle })(Article)
