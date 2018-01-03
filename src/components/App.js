@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import MyInput from './Filters/MyInput'
 import MySelect from './Filters/MySelect'
 import Articles from './routes/Articles'
+import NewArticle from './routes/NewArticle'
+import NotFound from './routes/NotFound'
 import MyDatePicker from './Filters/MyDatePicker'
 import Counter from './Counter'
-import { HashRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -24,16 +26,16 @@ export default class App extends Component {
                     </ul>
               </nav>
           </div>
-        <MyInput />
-          <Route path = "/counter" component = { Counter }/>
-          <Route path = "/select" component = { MySelect }/>
-          <div className = "main">
-            <div className= "right-bar">
-            <Route path = "/date-picker" component = { MyDatePicker }/>
-            </div>
+          <MyInput />
+          <Switch>
+              <Route path = "/counter" component = { Counter }/>
+              <Route path = "/select" component = { MySelect }/>
+              <Route path = "/date-picker" component = { MyDatePicker }/>
+              <Route path = "/articles/new" component = { NewArticle }/>
               <Route path = "/articles" component = { Articles }/>
+              <Route path = "*" component = { NotFound }/>
+          </Switch>
           </div>
-        </div>
       </Router>
     )
   }
