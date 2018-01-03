@@ -26,8 +26,9 @@ class Article extends PureComponent {
         updateIndex: 0
     }
 
-    componentWillReceiveProps({ isOpen, loadArticle, article }){
-        if(isOpen && !article.text && !article.loading) loadArticle(article.id);
+    componentDidMount(){
+        const { loadArticle, article, id } = this.props
+        if(!article || (!article.text && !article.loading)) loadArticle(id);
     }
     
     render() {
