@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MyInput from './Filters/MyInput'
 import MySelect from './Filters/MySelect'
-import ArticleList from './ArticleList'
+import Articles from './routes/Articles'
 import MyDatePicker from './Filters/MyDatePicker'
 import Counter from './Counter'
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom'
@@ -31,7 +31,7 @@ export default class App extends Component {
             <div className= "right-bar">
             <Route path = "/date-picker" component = { MyDatePicker }/>
             </div>
-              <Route path = "/articles" component = { ArticleList }/>
+              <Route path = "/articles" component = { Articles }/>
           </div>
         </div>
       </Router>
