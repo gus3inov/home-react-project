@@ -37,9 +37,6 @@ class Article extends PureComponent {
         return (
             <div className="article" ref = {this.setContainerRef}>
                 <h2 className="article-title">{ article.title }</h2>
-                <button className="article-button left" onClick = { toggleOpen }>
-                    { isOpen ? 'close' : 'open' }
-                </button>
                 <button className="article-button right" onClick = { this.handleDelete }>
                    Delete
                 </button>
