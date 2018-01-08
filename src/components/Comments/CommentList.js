@@ -6,7 +6,7 @@ import CommentForm from './CommentForm'
 import { loadComments } from "../AC";
 import Loader from './Loader'
 import { connect } from 'react-redux'
-import {mapToArr} from '../helpers'
+import { RaisedButton } from 'material-ui'
 
 class CommentList extends PureComponent {
     static propTypes = {
@@ -45,11 +45,11 @@ class CommentList extends PureComponent {
 
     render(){
         const { isOpen, toggleOpen, article } = this.props
-        const text = isOpen ? 'hide comments' : 'show comments'
+        const text = isOpen ? 'Hide comments' : 'Show comments'
         
         return (
             <div className="article-comments">
-                <button className="article-button__comment" onClick = {toggleOpen}>{text}</button>
+                <RaisedButton onClick = {toggleOpen}>{text}</RaisedButton>
                 {this.getBody({ article, isOpen })}
             </div>
         )

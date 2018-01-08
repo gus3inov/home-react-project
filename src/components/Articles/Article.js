@@ -8,7 +8,7 @@ import { deleteArticle } from '../AC'
 import { loadArticle } from '../AC'
 import Loader from './Loader'
 import '../css/animation.css'
-
+import { RaisedButton } from 'material-ui'
 
 class Article extends PureComponent {
     static propTypes = {
@@ -37,9 +37,9 @@ class Article extends PureComponent {
         return (
             <div className="article" ref = {this.setContainerRef}>
                 <h2 className="article-title">{ article.title }</h2>
-                <button className="article-button right" onClick = { this.handleDelete }>
+                <RaisedButton className="right" onClick = { this.handleDelete }>
                    Delete
-                </button>
+                </RaisedButton>
                 <CSSTransitionGroup
                     transitionName = 'article'
                     transitionEnterTimeout = { 300 }
@@ -65,7 +65,7 @@ class Article extends PureComponent {
         if (article.loading) return <Loader/>
         return (
             <section className="article-text">
-                  <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
+                  <RaisedButton onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</RaisedButton>
                { article.text }
                <CommentList article = { article } ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
             </section>
