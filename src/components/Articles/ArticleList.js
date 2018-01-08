@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { filtrateArticlesSelector } from '../selectors'
-import { loadAllArticles } from '../AC'
-import Loader from './Loader'
+import { filtrateArticlesSelector } from '../../selectors/index'
+import { loadAllArticles } from '../../AC/index'
+import Loader from '../Loader'
 import { NavLink } from 'react-router-dom'
 
 class ArticleList extends Component {

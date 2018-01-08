@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react'
 import Comment from './Comment'
 import PropTypes from 'prop-types'
-import toggleOpen from '../decorators/toggleOpen'
+import toggleOpen from '../../decorators/toggleOpen'
 import CommentForm from './CommentForm'
-import { loadComments } from "../AC";
-import Loader from './Loader'
+import { loadComments } from "../../AC/index";
+import Loader from '../Loader'
 import { connect } from 'react-redux'
 import { RaisedButton } from 'material-ui'
 
@@ -28,17 +28,17 @@ class CommentList extends PureComponent {
         
         if (!comments.length) return (
             <div>
-                <p>No comments yet</p>
                 <CommentForm articleId = {id} />
+                <p>No comments yet</p>
             </div>
         )
         
         return (
             <div>
+                <CommentForm articleId = {id} />
                 <ul>
                     {comments.map(id => <li key={id}><Comment id = {id}/></li>)}
                 </ul>
-                <CommentForm articleId = {id} />
             </div>
         )
     }
@@ -49,7 +49,7 @@ class CommentList extends PureComponent {
         
         return (
             <div className="article-comments">
-                <RaisedButton onClick = {toggleOpen}>{text}</RaisedButton>
+                <RaisedButton className = "article-comments__button" onClick = {toggleOpen}>{text}</RaisedButton>
                 {this.getBody({ article, isOpen })}
             </div>
         )

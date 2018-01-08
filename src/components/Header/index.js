@@ -64,6 +64,7 @@ class Header extends Component {
                     onLeftIconButtonClick = {this.toggleMenu}
                     iconElementLeft={ this.state.openMenu ? <IconButton><NavigationClose /></IconButton> : null}
                     iconElementRight={this.state.logged ? <Logged /> : <Login />}
+                    className={this.state.openMenu ? "alt-header open" : "alt-header false"}
                 />
                 <Toggle
                     label="Logged"

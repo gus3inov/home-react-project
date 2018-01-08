@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { addComment } from '../AC'
+import { addComment } from '../../AC/index'
+import TextField from 'material-ui/TextField'
+import { orange500, blue500, red500 } from 'material-ui/styles/colors'
+import RaisedButton from 'material-ui/RaisedButton';
 
 export class CommentForm extends Component {
   static propTypes = {
@@ -15,6 +18,24 @@ export class CommentForm extends Component {
     user: '',
     text: ''
   }
+
+   styles = {
+        errorStyle: {
+            color: red500,
+        },
+        underlineStyle: {
+            borderColor: blue500,
+        },
+        errorUnderlineStyle: {
+            borderColor: red500
+        },
+        floatingLabelStyle: {
+            color: blue500,
+        },
+        floatingLabelFocusStyle: {
+            color: blue500,
+        },
+    }
 
 
     handleSubmit = ev => {
@@ -46,22 +67,31 @@ export class CommentForm extends Component {
   render() {
     return (
       <form onSubmit = { this.handleSubmit } className = "form-comment">
-        <input 
-          value = { this.state.user }
-          type = "text" 
-          className = "form-comment__input" 
-          style = { this.state.isInputWrite ? { color: '#fff' } : { color: 'red' } } 
-          placeholder="Введите username"
-          onChange = { this.handleInputChange }
-         />
+          <TextField
+              floatingLabelText="Username"
+              floatingLabelStyle={ this.state.isInputWrite ? this.styles.floatingLabelStyle:this.styles.errorStyle }
+              floatingLabelFocusStyle={ this.state.isInputWrite ? this.styles.floatingLabelStyle : this.styles.errorStyle }
+              underlineFocusStyle={ this.state.isInputWrite ? this.styles.underlineStyle : this.styles.errorUnderlineStyle}
+              value = { this.state.user }
+              type = "text"
+              className = { this.state.isInputWrite ? "form-comment__input black" : "form-comment__input red" }
+              onChange = { this.handleInputChange }
+          />
        <div>
-       <textarea   
-         value = { this.state.text } 
-         className = "form-comment__textarea" 
-         style = { this.state.isTextAreaWrite ? { color: '#fff' } : { color: 'red' } }
-         onChange = { this.handleTextAreaChange }
-       />
-       <input className = "form-comment__button" type = "submit" value = "Добавить коментарий"/>
+           <TextField
+               floatingLabelText="Text"
+               multiLine={true}
+               rows={2}
+               rowsMax={3}
+               value = { this.state.text }
+               onChange = { this.handleTextAreaChange }
+               className = { this.state.isTextAreaWrite ? "form-comment__textarea black" : "form-comment__textarea red" }
+               underlineFocusStyle={ this.state.isTextAreaWrite ? this.styles.underlineStyle : this.styles.errorUnderlineStyle}
+               floatingLabelStyle={ this.state.isTextAreaWrite ? this.styles.floatingLabelStyle:this.styles.errorStyle }
+               floatingLabelFocusStyle={ this.state.isTextAreaWrite ? this.styles.floatingLabelStyle : this.styles.errorStyle }
+           />
+
+           <RaisedButton type = "submit" label="Добавить коментарий" primary={true} />
        </div>
       </form>
     )

@@ -106,6 +106,14 @@ export function loadComments (id){
     }
 }
 
+export function commentsPlagination(){
+    return {
+        type: LOAD_COMMENT_PAGE,
+        payload: { offset },
+        callAPI: `/api/comment?limit=5&offset=1&`
+    }
+}
+
 // export function loadArticle(id){
 //     return {
 //         type: LOAD_ARTICLE,

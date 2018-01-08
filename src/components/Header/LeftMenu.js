@@ -1,18 +1,23 @@
-import React from 'react';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import RaisedButton from 'material-ui/RaisedButton'
+import { NavLink } from 'react-router-dom'
 
 export default function LeftMenu ({ openMenu, handleToggle }) {
+    const activeStyle = '#00d8ff'
         return (
             <div>
-                <RaisedButton
-                    label="Toggle Drawer"
-                    onClick={ handleToggle }
-                />
-                <Drawer open={ openMenu }>
-                    <MenuItem>Menu Item</MenuItem>
-                    <MenuItem>Menu Item 2</MenuItem>
+                <Drawer className = "alt-toggle-menu" open={ openMenu }>
+                    <div className = "alt-toggle-menu__header">
+                        <NavLink to = "/"><h1 className = "title">React-Blog</h1>
+                        <img src="https://cdn.worldvectorlogo.com/logos/react.svg" alt=""/>
+                    </NavLink>
+                    </div>
+                    <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/counter">Counter</NavLink></MenuItem>
+                    <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/select">Select Filter</NavLink></MenuItem>
+                    <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/date-picker">Date Picker Filter</NavLink></MenuItem>
+                    <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/articles">Articles</NavLink></MenuItem>
                 </Drawer>
             </div>
         );

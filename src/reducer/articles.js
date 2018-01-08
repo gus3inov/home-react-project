@@ -31,7 +31,7 @@ export default (articlesState = defaultState, action) => {
             return articlesState.updateIn(
                 [
                     'entities',
-                     payload.articleId, 
+                     payload.articleId,
                      'comments'
                 ], 
                      comments =>  comments.concat(randomId))

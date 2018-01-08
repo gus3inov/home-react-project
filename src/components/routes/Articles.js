@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import ArticleList from '../ArticleList'
-import Article from '../Article'
+import ArticleList from '../Articles/ArticleList'
+import Article from '../Articles/Article'
 import { Route } from 'react-router-dom'
 
 class Articles extends Component {
