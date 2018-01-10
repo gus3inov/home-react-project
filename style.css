@@ -79,6 +79,10 @@ a:hover {
     padding: 0 10px !important;
 }
 
+.alt-toggle-menu .alt-toggle-menu__header{
+    margin-top: 5px;
+}
+
 .alt-toggle-menu .alt-toggle-menu__header a{
     display: flex;
     align-items: center;
@@ -130,6 +134,22 @@ a:hover {
 .article-title{
     text-align: center;
 }
+
+.alt-header__logo a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alt-header__logo a img{
+    width: 50px;
+    margin-left: 20px;
+}
+
+.alt-header__logo a h1{
+    margin: 0;
+}
+
 
 .article{
     display: flex;

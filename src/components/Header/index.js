@@ -8,6 +8,7 @@ import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LeftMenu from './LeftMenu'
+import { NavLink } from 'react-router-dom'
 
 class Login extends Component {
     static muiName = 'FlatButton';
@@ -60,7 +61,11 @@ class Header extends Component {
         return (
             <div>
                 <AppBar
-                    title="Title"
+                    title={<div className = "alt-header__logo">
+                        <NavLink to = "/"><h1 className = "title">React-Blog</h1>
+                            <img src="https://cdn.worldvectorlogo.com/logos/react.svg" alt=""/>
+                        </NavLink>
+                    </div>}
                     onLeftIconButtonClick = {this.toggleMenu}
                     iconElementLeft={ this.state.openMenu ? <IconButton className="menu-button"><NavigationClose /></IconButton> : null}
                     iconElementRight={this.state.logged ? <Logged toggleClick={this.handleChange}/> : <Login onClick={this.handleChange}/>}
