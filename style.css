@@ -94,6 +94,15 @@ a:hover {
     height: 50px;
 }
 
+.alt-select{
+    margin-bottom: 20px;
+}
+
+.article-list{
+    display: flex;
+    justify-content: space-between;
+}
+
 .form-comment__input.black input{
     color: rgb(33, 150, 243) !important;
 }

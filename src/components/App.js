@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import MyInput from './Filters/MyInput'
-import MySelect from './Filters/MySelect'
 import Articles from './routes/Articles'
 import NewArticle from './routes/NewArticle'
 import NotFound from './routes/NotFound'
 import Counter from './Counter'
-import MyDatePicker from './Filters/MyDatePicker'
 import CommentsPage from './routes/CommentsPage'
 import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -51,9 +49,7 @@ export default class App extends Component {
                   <MyInput />
                   <Switch>
                       <Route path = "/counter" component = { Counter }/>
-                      <Route path = "/select" component = { MySelect }/>
                       <Route path = "/comment/:page" component = { CommentsPage }/>
-                      <Route path = "/date-picker" component = { MyDatePicker }/>
                       <Route path = "/articles/new" component = { NewArticle }/>
                       <Route path = "/articles" component = { Articles }/>
                       <Redirect from="/comments" to="/comments/1" />

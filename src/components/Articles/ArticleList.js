@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import { filtrateArticlesSelector } from '../../selectors/index'
 import { loadAllArticles } from '../../AC/index'
 import Loader from '../Loader'
+import MySelect from '../Filters/MySelect'
+import MyDatePicker from '../Filters/MyDatePicker'
 import { NavLink } from 'react-router-dom'
-import {GridList, GridTile} from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import Subheader from 'material-ui/Subheader';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import {GridList, GridTile} from 'material-ui/GridList'
+import IconButton from 'material-ui/IconButton'
+import StarBorder from 'material-ui/svg-icons/toggle/star-border'
+
 
 const styles = {
     root: {
@@ -51,13 +53,17 @@ class ArticleList extends Component {
             )
 
         return (
-            <div className = "article-list">
-                <GridList
-                    cellHeight={180}
-                    style={styles.gridList}
-                >
-                { articleRender }
-                </GridList>
+            <div>
+                <MySelect/>
+                <div className = "article-list">
+                    <GridList
+                        cellHeight={180}
+                        style={styles.gridList}
+                    >
+                        { articleRender }
+                    </GridList>
+                    <MyDatePicker/>
+                </div>
             </div>
         )
     }
