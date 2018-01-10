@@ -49,7 +49,7 @@ class CommentList extends PureComponent {
         
         return (
             <div className="article-comments">
-                <RaisedButton className = "article-comments__button" onClick = {toggleOpen}>{text}</RaisedButton>
+                <RaisedButton className = "button" onClick = {toggleOpen}>{text}</RaisedButton>
                 {this.getBody({ article, isOpen })}
             </div>
         )

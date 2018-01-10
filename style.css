@@ -1,6 +1,8 @@
 body{
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    background-color: rgb(48, 48, 48);
+    color: #fff;
 }
 
 *{
@@ -21,7 +23,18 @@ ul, li{
 
 a{
     text-decoration: none;
-    color: #000;
+    color: #fff;
+}
+
+a:hover {
+    color: #00d8ff;
+}
+
+.alt-loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .alt-header{
@@ -30,6 +43,20 @@ a{
 
 .alt-header h1{
     color: #fff !important;
+}
+
+.alt-tab a{
+    display: block;
+    width: 100%;
+    padding: 17px 0;
+}
+
+.alt-tab{
+    transition: 0.32s !important;
+}
+
+.alt-tab:hover{
+    background: rgb(27, 27, 27) !important;
 }
 
 .alt-toggle-menu div span[role="menuitem"] a{
@@ -48,7 +75,7 @@ a{
     margin-bottom: 20px;
 }
 
-.article-comments__button button{
+.button button{
     padding: 0 10px !important;
 }
 
@@ -64,7 +91,7 @@ a{
 }
 
 .form-comment__input.black input{
-    color: rgb(48, 48, 48) !important;
+    color: rgb(33, 150, 243) !important;
 }
 
 .form-comment__input.red input{
@@ -76,7 +103,7 @@ a{
 }
 
 .form-comment__textarea.black textarea{
-    color: rgb(48, 48, 48) !important;
+    color: rgb(33, 150, 243) !important;
 }
 
 .form-comment__textarea.red textarea{
@@ -95,8 +122,9 @@ a{
     margin: 20px 330px;
 }
 
-.alt-header.open div button {
+.alt-header.open div .menu-button {
     left: 250px;
+    transition: 0.32s;
 }
 
 .article-title{
@@ -141,10 +169,7 @@ a{
     display: flex;
     flex-direction: column;
     width: 700px;
-}
-
-.article-comments .article-comment__info .article-comment__info_user{
-    color: #000;
+    color: #fff;
 }
 
 .main{

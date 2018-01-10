@@ -5,6 +5,23 @@ import { filtrateArticlesSelector } from '../../selectors/index'
 import { loadAllArticles } from '../../AC/index'
 import Loader from '../Loader'
 import { NavLink } from 'react-router-dom'
+import {GridList, GridTile} from 'material-ui/GridList';
+import IconButton from 'material-ui/IconButton';
+import Subheader from 'material-ui/Subheader';
+import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
+const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+    },
+    gridList: {
+        width: 500,
+        height: 450,
+        overflowY: 'auto',
+    },
+};
 
 class ArticleList extends Component {
     static propTypes = {
@@ -19,19 +36,28 @@ class ArticleList extends Component {
     render(){
         const { articles, loading } = this.props 
         if(loading) return <Loader />
-        const articleRender = articles.map(article => 
-            <li key={ article.id }>
-                <NavLink to = { `/articles/${article.id}` } activeStyle = {{ color: 'red' }} >
-                    { article.title }
+        const articleRender = articles.map(article =>
+                <NavLink  key={ article.id } to = { `/articles/${article.id}` } >
+                    <GridTile
+                        key={ article.id }
+                        title={article.title}
+                        subtitle={article.author ? <span>by <b>{article.author}</b></span> : <span>by <b>{'noname'}</b></span>}
+                        actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                    >
+                        {article.img ? <img src={article.img} /> : <img src="https://facebook.github.io/react-vr/img/opengraph.png" />}
+                    </GridTile>
                 </NavLink>
-            </li>
+
             )
 
         return (
             <div className = "article-list">
-            <ul>
+                <GridList
+                    cellHeight={180}
+                    style={styles.gridList}
+                >
                 { articleRender }
-            </ul>
+                </GridList>
             </div>
         )
     }

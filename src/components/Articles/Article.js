@@ -8,7 +8,7 @@ import { deleteArticle } from '../../AC/index'
 import { loadArticle } from '../../AC/index'
 import Loader from '../Loader'
 import '../../css/animation.css'
-import { RaisedButton } from 'material-ui'
+
 import ArticleHeader from './ArticleHeader'
 
 class Article extends PureComponent {

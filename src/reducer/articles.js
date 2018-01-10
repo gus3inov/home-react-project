@@ -34,7 +34,11 @@ export default (articlesState = defaultState, action) => {
                      payload.articleId,
                      'comments'
                 ], 
-                     comments =>  comments.concat(randomId))
+                     comments => {
+                         comments.unshift(randomId)
+
+                         return comments.concat(randomId)
+                     })
 
         case LOAD_ALL_ARTICLES + START:
                 return articlesState.set('loading', true)

@@ -7,16 +7,17 @@ import { orange500, blue500, red500 } from 'material-ui/styles/colors'
 import RaisedButton from 'material-ui/RaisedButton';
 
 export class CommentForm extends Component {
+
   static propTypes = {
-    articleId: PropTypes.string.isRequired,
-    addComment: PropTypes.func.isRequired
+        articleId: PropTypes.string.isRequired,
+        addComment: PropTypes.func.isRequired
   };
 
   state = {
-    isInputWrite: false,
-    isTextAreaWrite: false,
-    user: '',
-    text: ''
+        isInputWrite: false,
+        isTextAreaWrite: false,
+        user: '',
+        text: ''
   }
 
    styles = {
@@ -91,7 +92,7 @@ export class CommentForm extends Component {
                floatingLabelFocusStyle={ this.state.isTextAreaWrite ? this.styles.floatingLabelStyle : this.styles.errorStyle }
            />
 
-           <RaisedButton type = "submit" label="Добавить коментарий" primary={true} />
+           <RaisedButton className = "button" type = "submit" primary={true}>Добавить коментарий</RaisedButton>
        </div>
       </form>
     )

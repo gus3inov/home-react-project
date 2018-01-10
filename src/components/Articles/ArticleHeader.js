@@ -37,7 +37,7 @@ export default class ArticleHeader extends Component {
                     <ToolbarTitle text="Options" />
                     <FontIcon className="muidocs-icon-custom-sort" />
                     <ToolbarSeparator />
-                    <RaisedButton label="Create Broadcast" primary={true} />
+                    <RaisedButton className="button" primary={true} >Create Broadcast</RaisedButton>
                     <IconMenu
                         iconButtonElement={
                             <IconButton touch={true}>

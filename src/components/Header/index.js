@@ -30,7 +30,7 @@ const Logged = (props) => (
     >
         <MenuItem primaryText="Refresh" />
         <MenuItem primaryText="Help" />
-        <MenuItem primaryText="Sign out" />
+        <MenuItem onClick={props.toggleClick} primaryText="Sign out" />
     </IconMenu>
 );
 
@@ -47,7 +47,7 @@ class Header extends Component {
     };
 
     handleChange = (event, logged) => {
-        this.setState({logged: logged});
+        this.setState({logged: !this.state.logged});
     };
 
     toggleMenu = () => {
@@ -62,16 +62,9 @@ class Header extends Component {
                 <AppBar
                     title="Title"
                     onLeftIconButtonClick = {this.toggleMenu}
-                    iconElementLeft={ this.state.openMenu ? <IconButton><NavigationClose /></IconButton> : null}
-                    iconElementRight={this.state.logged ? <Logged /> : <Login />}
-                    className={this.state.openMenu ? "alt-header open" : "alt-header false"}
-                />
-                <Toggle
-                    label="Logged"
-                    defaultToggled={true}
-                    onToggle={this.handleChange}
-                    labelPosition="right"
-                    style={{margin: 20}}
+                    iconElementLeft={ this.state.openMenu ? <IconButton className="menu-button"><NavigationClose /></IconButton> : null}
+                    iconElementRight={this.state.logged ? <Logged toggleClick={this.handleChange}/> : <Login onClick={this.handleChange}/>}
+                    className={this.state.openMenu ? "alt-header open" : "alt-header close"}
                 />
                 <LeftMenu openMenu = { this.state.openMenu } handleToggle = { this.toggleMenu }/>
             </div>

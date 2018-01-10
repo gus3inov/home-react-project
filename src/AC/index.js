@@ -12,7 +12,8 @@ import {
     START,
     FAIL,
     SUCCESS,
-    LOAD_COMMENTS
+    LOAD_COMMENTS,
+    LOAD_COMMENTS_PAGE
     } from '../constance'
 
 export function increment (){
@@ -104,19 +105,18 @@ export function loadComments (id){
         payload: { id },
         callAPI: `/api/comment?article=${id}`
     }
+
 }
 
-export function commentsPlagination(){
-    return {
-        type: LOAD_COMMENT_PAGE,
-        payload: { offset },
-        callAPI: `/api/comment?limit=5&offset=1&`
+export function checkAndLoadCommentsForPage(offset){
+    return (dispatch, getState) => {
+        const {comments: {pagination}} = getState()
+        if (pagination.getIn([offset, 'loading']) || pagination.getIn([offset, 'ids'])) return
+
+        dispatch({
+            type: LOAD_COMMENTS_PAGE,
+            payload: { offset },
+            callAPI: `/api/comment?limit=5&offset=${(offset - 1) * 5}`
+        })
     }
 }
-
-// export function loadArticle(id){
-//     return {
-//         type: LOAD_ARTICLE,
-//         callAPI: `/api/article/${id}`
-//     }
-// }
