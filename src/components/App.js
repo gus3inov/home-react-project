@@ -5,7 +5,12 @@ import NewArticle from './routes/NewArticle'
 import NotFound from './routes/NotFound'
 import Counter from './Counter'
 import CommentsPage from './routes/CommentsPage'
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom'
+import { Router, Switch, Redirect, Route } from 'react-router-dom'
+import history from '../history'
+import { ConnectedRouter } from 'react-router-redux'
+/**
+ * @import style from Material UI
+ */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Header from './Header/index'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -41,7 +46,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <Router>
+      <ConnectedRouter history = {history}>
           <MuiThemeProvider muiTheme={getTheme()}>
                 <div>
                     <Header className="alt-header" title="React Blog" />
@@ -49,16 +54,16 @@ export default class App extends Component {
                   <MyInput />
                   <Switch>
                       <Route path = "/counter" component = { Counter }/>
-                      <Route path = "/comment/:page" component = { CommentsPage }/>
+                      <Route path = "/comments" component = { CommentsPage }/>
                       <Route path = "/articles/new" component = { NewArticle }/>
                       <Route path = "/articles" component = { Articles }/>
-                      <Redirect from="/comments" to="/comments/1" />
+                      {/*<Redirect from="/comments" to="/comments/1" />*/}
                       <Route path = "*" component = { NotFound }/>
                   </Switch>
                   </div>
                 </div>
           </MuiThemeProvider>
-      </Router>
+      </ConnectedRouter>
     )
   }
 

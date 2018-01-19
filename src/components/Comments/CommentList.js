@@ -15,6 +15,10 @@ class CommentList extends PureComponent {
         toggleOpen: PropTypes.func.isRequired
     }
 
+    static contextTypes = {
+        store: PropTypes.object
+    }
+
     componentWillReceiveProps({ isOpen, article, loadComments }) {
         if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article.id)    
     }
@@ -46,7 +50,7 @@ class CommentList extends PureComponent {
     render(){
         const { isOpen, toggleOpen, article } = this.props
         const text = isOpen ? 'Hide comments' : 'Show comments'
-        
+        console.log(this.context)
         return (
             <div className="article-comments">
                 <RaisedButton className = "button" onClick = {toggleOpen}>{text}</RaisedButton>
