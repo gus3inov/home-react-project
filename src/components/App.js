@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import MyInput from './Filters/MyInput'
 import Articles from './routes/Articles'
 import NewArticle from './routes/NewArticle'
@@ -8,6 +9,8 @@ import CommentsPage from './routes/CommentsPage'
 import { Router, Switch, Redirect, Route } from 'react-router-dom'
 import history from '../history'
 import { ConnectedRouter } from 'react-router-redux'
+import Toggle from 'material-ui/Toggle';
+
 /**
  * @import style from Material UI
  */
@@ -17,6 +20,30 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import * as Colors from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator'
+
+const styles = {
+    block: {
+        maxWidth: 250,
+    },
+    toggle: {
+        marginBottom: 16,
+    },
+    thumbOff: {
+        backgroundColor: '#ffcccc',
+    },
+    trackOff: {
+        backgroundColor: '#ff9d9d',
+    },
+    thumbSwitched: {
+        backgroundColor: 'red',
+    },
+    trackSwitched: {
+        backgroundColor: '#ff9d9d',
+    },
+    labelStyle: {
+        color: 'red',
+    },
+};
 
 const getTheme = () => {
     let overwrites = {
@@ -44,12 +71,40 @@ const getTheme = () => {
 
 export default class App extends Component {
 
+    state ={
+        language: true
+    }
+
+   static childContextTypes = {
+        language: PropTypes.bool.isRequired
+    }
+
+    getChildContext () {
+        return {
+            language: this.state.language
+        };
+    }
+
+    changeLanguage = () => {
+        this.setState({
+            language: !this.state.language
+        })
+    }
+
   render() {
     return (
       <ConnectedRouter history = {history}>
           <MuiThemeProvider muiTheme={getTheme()}>
                 <div>
                     <Header className="alt-header" title="React Blog" />
+                    <Toggle
+                        thumbStyle={styles.thumbOff}
+                        trackStyle={styles.trackOff}
+                        thumbSwitchedStyle={styles.thumbSwitched}
+                        trackSwitchedStyle={styles.trackSwitched}
+                        labelStyle={styles.labelStyle}
+                        onToggle={this.changeLanguage}
+                    />
                   <div className="alt-wrapper">
                   <MyInput />
                   <Switch>

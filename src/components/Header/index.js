@@ -4,7 +4,6 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import LeftMenu from './LeftMenu'
@@ -61,7 +60,8 @@ class Header extends Component {
         return (
             <div>
                 <AppBar
-                    title={<div className = "alt-header__logo">
+                    title={
+                        <div className = "alt-header__logo">
                         <NavLink to = "/"><h1 className = "title">React-Blog</h1>
                             <img src="https://cdn.worldvectorlogo.com/logos/react.svg" alt=""/>
                         </NavLink>

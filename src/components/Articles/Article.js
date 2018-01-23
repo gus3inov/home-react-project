@@ -23,6 +23,10 @@ class Article extends PureComponent {
         toggleOpen: PropTypes.func
     }
 
+    static contextTypes = {
+            language: PropTypes.bool.isRequired
+    }
+
     state = {
         updateIndex: 0
     }
@@ -35,6 +39,7 @@ class Article extends PureComponent {
     render() {
         const { article, isOpen, toggleOpen } = this.props
         if(!article) return null
+        console.log(this.context.language)
         return (
             <div className="article" ref = {this.setContainerRef}>
                 <h2 className="article-title">{ article.title }</h2>
