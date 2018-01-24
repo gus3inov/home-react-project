@@ -7,6 +7,7 @@ import { loadComments } from "../../AC/index";
 import Loader from '../Loader'
 import { connect } from 'react-redux'
 import { RaisedButton } from 'material-ui'
+import { ru, en } from '../../description'
 
 class CommentList extends PureComponent {
     static propTypes = {
@@ -16,7 +17,12 @@ class CommentList extends PureComponent {
     }
 
     static contextTypes = {
-        store: PropTypes.object
+        language: PropTypes.bool.isRequired
+    }
+
+    words = {
+        show_comments: this.context.language ? ru.show_comments : en.show_comments,
+        hide_comments: this.context.language ? ru.hide_comments : en.hide_comments
     }
 
     componentWillReceiveProps({ isOpen, article, loadComments }) {
@@ -49,7 +55,7 @@ class CommentList extends PureComponent {
 
     render(){
         const { isOpen, toggleOpen, article } = this.props
-        const text = isOpen ? 'Hide comments' : 'Show comments'
+        const text = isOpen ? this.words.hide_comments : this.words.show_comments
         console.log(this.context)
         return (
             <div className="article-comments">
