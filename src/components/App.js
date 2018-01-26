@@ -6,10 +6,11 @@ import NewArticle from './routes/NewArticle'
 import NotFound from './routes/NotFound'
 import Counter from './Counter'
 import CommentsPage from './routes/CommentsPage'
-import { Router, Switch, Redirect, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import history from '../history'
 import { ConnectedRouter } from 'react-router-redux'
 import Toggle from 'material-ui/Toggle';
+import { ru, en } from '../description'
 
 /**
  * @import style from Material UI
@@ -71,17 +72,25 @@ const getTheme = () => {
 
 export default class App extends Component {
 
-    state ={
+    state = {
         language: true
     }
 
+    words = {
+        show_comments:  this.state.language ? ru.show_comments : en.show_comments,
+        hide_comments:  this.state.language ? ru.hide_comments : en.hide_comments,
+        add_comment:    this.state.language ? ru.add_comment : en.hide_comments
+    }
+
    static childContextTypes = {
-        language: PropTypes.bool.isRequired
+        language: PropTypes.bool.isRequired,
+        words: PropTypes.object
     }
 
     getChildContext () {
         return {
-            language: this.state.language
+            language: this.state.language,
+            words: this.words
         };
     }
 

@@ -7,7 +7,6 @@ import { loadComments } from "../../AC/index";
 import Loader from '../Loader'
 import { connect } from 'react-redux'
 import { RaisedButton } from 'material-ui'
-import { ru, en } from '../../description'
 
 class CommentList extends PureComponent {
     static propTypes = {
@@ -17,16 +16,12 @@ class CommentList extends PureComponent {
     }
 
     static contextTypes = {
-        language: PropTypes.bool.isRequired
-    }
-
-    words = {
-        show_comments: this.context.language ? ru.show_comments : en.show_comments,
-        hide_comments: this.context.language ? ru.hide_comments : en.hide_comments
+        language: PropTypes.bool,
+        words: PropTypes.object.isRequired
     }
 
     componentWillReceiveProps({ isOpen, article, loadComments }) {
-        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article.id)    
+        if (!this.props.isOpen && isOpen && !article.commentsLoading && !article.commentsLoaded) loadComments(article.id)
     }
 
     getBody = () => {
@@ -55,7 +50,8 @@ class CommentList extends PureComponent {
 
     render(){
         const { isOpen, toggleOpen, article } = this.props
-        const text = isOpen ? this.words.hide_comments : this.words.show_comments
+        const { words } = this.context
+        const text = isOpen ? words.hide_comments : words.show_comments
         console.log(this.context)
         return (
             <div className="article-comments">

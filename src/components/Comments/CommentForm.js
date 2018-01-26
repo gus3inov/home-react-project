@@ -38,6 +38,9 @@ export class CommentForm extends Component {
         },
     }
 
+    static contextTypes = {
+      add_comment: PropTypes.string
+    }
 
     handleSubmit = ev => {
       ev.preventDefault()
