@@ -3,7 +3,7 @@ import Comment from './Comment'
 import PropTypes from 'prop-types'
 import toggleOpen from '../../decorators/toggleOpen'
 import CommentForm from './CommentForm'
-import { loadComments } from "../../AC/index";
+import { loadComments } from "../../AC/index"
 import Loader from '../Loader'
 import { connect } from 'react-redux'
 import { RaisedButton } from 'material-ui'
@@ -53,6 +53,7 @@ class CommentList extends PureComponent {
         const { words } = this.context
         const text = isOpen ? words.hide_comments : words.show_comments
         console.log(this.context)
+
         return (
             <div className="article-comments">
                 <RaisedButton className = "button" onClick = {toggleOpen}>{text}</RaisedButton>
@@ -62,4 +63,6 @@ class CommentList extends PureComponent {
     }
 }
 
-export default connect(null, { loadComments })(toggleOpen(CommentList))
+export default connect(null, {
+    loadComments
+})(toggleOpen(CommentList))

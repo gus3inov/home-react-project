@@ -4,6 +4,7 @@ import articles from './articles'
 import filters from './filters'
 import comments from './comments'
 import { routerReducer } from 'react-router-redux'
+import { reduxForm } from 'redux-form'
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
     articles,
     filters,
     comments,
-    router: routerReducer
+    router: routerReducer,
+    form: reduxForm
 })

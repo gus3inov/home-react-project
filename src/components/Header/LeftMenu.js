@@ -15,6 +15,7 @@ export default function LeftMenu ({ openMenu, handleToggle }) {
                     </div>
                     <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/counter">Counter</NavLink></MenuItem>
                     <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/articles">Articles</NavLink></MenuItem>
+                    <MenuItem><NavLink activeStyle = {{ color: activeStyle }} to = "/contact">Contact</NavLink></MenuItem>
                 </Drawer>
             </div>
         );

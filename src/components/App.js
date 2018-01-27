@@ -9,8 +9,8 @@ import CommentsPage from './routes/CommentsPage'
 import { Switch, Route } from 'react-router-dom'
 import history from '../history'
 import { ConnectedRouter } from 'react-router-redux'
-import Toggle from 'material-ui/Toggle';
 import { ru, en } from '../description'
+import Contact from "./Contact"
 
 /**
  * @import style from Material UI
@@ -21,6 +21,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import baseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import * as Colors from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator'
+import Toggle from 'material-ui/Toggle'
 
 const styles = {
     block: {
@@ -119,6 +120,7 @@ export default class App extends Component {
                   <Switch>
                       <Route path = "/counter" component = { Counter }/>
                       <Route path = "/comments" component = { CommentsPage }/>
+                      <Route path = "/contact" component = { Contact }/>
                       <Route path = "/articles/new" component = { NewArticle }/>
                       <Route path = "/articles" component = { Articles }/>
                       {/*<Redirect from="/comments" to="/comments/1" />*/}
