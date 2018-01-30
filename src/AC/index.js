@@ -13,7 +13,8 @@ import {
     FAIL,
     SUCCESS,
     LOAD_COMMENTS,
-    LOAD_COMMENTS_PAGE
+    LOAD_COMMENTS_PAGE,
+    SUBMIT_FORM
     } from '../constance'
 
 import {push} from 'react-router-redux'
@@ -128,6 +129,29 @@ export function checkAndLoadCommentsForPage(offset){
             type: LOAD_COMMENTS_PAGE,
             payload: { offset },
             callAPI: `/api/comment?limit=5&offset=${(offset - 1) * 5}`
+        })
+    }
+}
+
+export function submitForm (value){
+   return dispatch => {
+        fetch('api/contact', {
+            method: 'POST',
+            body: value
+        }).then((response) => {
+
+            if(!response.ok){
+                throw Error(response.statusText)
+            }
+
+            console.log(response)
+
+            dispatch({
+                type: SUBMIT_FORM,
+                payload: value
+            })
+        }).catch(err => {
+            console.error(err)
         })
     }
 }

@@ -3,8 +3,9 @@ import counterReducer from './counter'
 import articles from './articles'
 import filters from './filters'
 import comments from './comments'
+import formUserReducer  from './form'
 import { routerReducer } from 'react-router-redux'
-import { reduxForm } from 'redux-form'
+import { reducer as formReducer } from 'redux-form'
 
 
 export default combineReducers({
@@ -12,6 +13,7 @@ export default combineReducers({
     articles,
     filters,
     comments,
+    formUserReducer,
     router: routerReducer,
-    form: reduxForm
+    form: formReducer
 })

@@ -9,6 +9,11 @@ var app = express();
 app.use(bodyParser.json());
 app.use('/api', api)
 
+app.use('/contact', function (req, res) {
+
+    res.send('hello')
+})
+
 app.listen(port, 'localhost', function (err) {
     if (err) {
         console.log(err);

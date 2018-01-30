@@ -189,7 +189,12 @@ var articles = [
     }
 ]
 
+var user = [
+
+]
+
 module.exports = {
     comments: comments,
-    articles: articles
+    articles: articles,
+    user: user
 };

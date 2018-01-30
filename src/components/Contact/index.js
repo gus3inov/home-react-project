@@ -1,19 +1,27 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Form from './Form'
+import { connect } from 'react-redux'
+import { submitForm } from '../../AC'
 
-export default class Contact extends Component {
+class Contact extends Component {
     static propTypes = {}
 
-    handleSubmit = (values) => {
-        console.log(values)
+    submit = (values) => {
+
+        this.props.submitForm(values)
+        console.log(this.props.userData)
     }
 
     render() {
         return (
             <div>
-                <Form onSubmit={this.handleSubmit}/>
+                <Form onSubmit={ this.submit }/>
             </div>
         )
     }
 }
+
+export default connect((state, ownProps) => ({
+    userData: state.form.users
+}), { submitForm })(Contact)

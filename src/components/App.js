@@ -11,6 +11,7 @@ import history from '../history'
 import { ConnectedRouter } from 'react-router-redux'
 import { ru, en } from '../description'
 import Contact from "./Contact"
+import MainPage from './MainPage'
 
 /**
  * @import style from Material UI
@@ -123,6 +124,7 @@ export default class App extends Component {
                       <Route path = "/contact" component = { Contact }/>
                       <Route path = "/articles/new" component = { NewArticle }/>
                       <Route path = "/articles" component = { Articles }/>
+                      <Route path = "/" component = { MainPage }/>
                       {/*<Redirect from="/comments" to="/comments/1" />*/}
                       <Route path = "*" component = { NotFound }/>
                   </Switch>
