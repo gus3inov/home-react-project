@@ -66,10 +66,32 @@ export function inputFilter ( title = '') {
 }
 
 export function addComment(comment, articleId) {
-    return {
-        type: ADD_COMMENT,
-        payload: { comment, articleId },
-        generateId: true
+    return dispatch => {
+        dispatch({
+            type: ADD_COMMENT,
+            payload: {comment, articleId},
+            generateId: true
+        })
+
+        fetch('api/comment', {
+            method: 'POST',
+            body: comment
+        }).then((response) => {
+
+            if (!response.ok) {
+                throw Error(response.statusText)
+            }
+
+            console.log(response)
+
+            dispatch({
+                type: ADD_COMMENT,
+                payload: {comment, articleId},
+                generateId: true
+            })
+        }).catch(err => {
+            console.error(err)
+        })
     }
 }
 
@@ -87,7 +109,6 @@ export function loadArticle(id){
             payload: { id }
         })
 
-        setTimeout(()=>{
             fetch(`/api/article/${id}`)
                 .then(res => {
                     if(res.status >= 400){
@@ -107,7 +128,6 @@ export function loadArticle(id){
                 })
             dispatch(push('/error'))
         })
-        }, 500)
     }
 }
 
