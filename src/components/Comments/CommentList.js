@@ -7,17 +7,13 @@ import { loadComments } from "../../AC/index"
 import Loader from '../Loader'
 import { connect } from 'react-redux'
 import { RaisedButton } from 'material-ui'
+import LocalizedText from '../LocalizedText'
 
 class CommentList extends PureComponent {
     static propTypes = {
         comment: PropTypes.array,
         isOpen: PropTypes.bool.isRequired,
         toggleOpen: PropTypes.func.isRequired
-    }
-
-    static contextTypes = {
-        language: PropTypes.bool,
-        words: PropTypes.object.isRequired
     }
 
     componentWillReceiveProps({ isOpen, article, loadComments }) {
@@ -50,13 +46,11 @@ class CommentList extends PureComponent {
 
     render(){
         const { isOpen, toggleOpen, article } = this.props
-        const { words } = this.context
-        const text = isOpen ? words.hide_comments : words.show_comments
-        console.log(this.context)
+        const text = isOpen ? 'hide_comments' : 'show_comments'
 
         return (
             <div className="article-comments">
-                <RaisedButton className = "button" onClick = {toggleOpen}>{text}</RaisedButton>
+                <RaisedButton className = "button" onClick = {toggleOpen}><LocalizedText>{text}</LocalizedText></RaisedButton>
                 {this.getBody({ article, isOpen })}
             </div>
         )

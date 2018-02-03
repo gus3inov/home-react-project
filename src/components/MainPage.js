@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { Title } from '../styled-components'
 import styled from 'styled-components'
+import LocalizedText from './LocalizedText'
 
 const Span = styled.span`
         background: ${props => props.primary ? 'palevioletred' : 'white'};
@@ -16,10 +17,9 @@ export default class MainPage extends PureComponent {
     }
 
     render() {
-        console.log(this.state.background)
         return (
             <div>
-                <Title> Главная </Title>
+                <LocalizedText>main_page</LocalizedText>
 
         <Span primary = {this.state.background}>Что то</Span>
                 <button onClick={() => {

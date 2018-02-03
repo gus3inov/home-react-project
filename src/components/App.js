@@ -12,6 +12,7 @@ import { ConnectedRouter } from 'react-router-redux'
 import { ru, en } from '../description'
 import Contact from "./Contact"
 import MainPage from './MainPage'
+import LanguageProvider from './LanguageProvider'
 
 /**
  * @import style from Material UI
@@ -78,24 +79,6 @@ export default class App extends Component {
         language: true
     }
 
-    words = {
-        show_comments:  this.state.language ? ru.show_comments : en.show_comments,
-        hide_comments:  this.state.language ? ru.hide_comments : en.hide_comments,
-        add_comment:    this.state.language ? ru.add_comment : en.hide_comments
-    }
-
-   static childContextTypes = {
-        language: PropTypes.bool.isRequired,
-        words: PropTypes.object
-    }
-
-    getChildContext () {
-        return {
-            language: this.state.language,
-            words: this.words
-        };
-    }
-
     changeLanguage = () => {
         this.setState({
             language: !this.state.language
@@ -106,6 +89,7 @@ export default class App extends Component {
     return (
       <ConnectedRouter history = {history}>
           <MuiThemeProvider muiTheme={getTheme()}>
+              <LanguageProvider language={this.state.language}>
                 <div>
                     <Header className="alt-header" title="React Blog" />
                     <Toggle
@@ -130,6 +114,7 @@ export default class App extends Component {
                   </Switch>
                   </div>
                 </div>
+              </LanguageProvider>
           </MuiThemeProvider>
       </ConnectedRouter>
     )

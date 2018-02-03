@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { addComment } from '../../AC/index'
 import TextField from 'material-ui/TextField'
 import { orange500, blue500, red500 } from 'material-ui/styles/colors'
-import RaisedButton from 'material-ui/RaisedButton';
+import RaisedButton from 'material-ui/RaisedButton'
+import LocalizedText from '../LocalizedText'
 
 export class CommentForm extends Component {
 
@@ -95,7 +96,7 @@ export class CommentForm extends Component {
                floatingLabelFocusStyle={ this.state.isTextAreaWrite ? this.styles.floatingLabelStyle : this.styles.errorStyle }
            />
 
-           <RaisedButton className = "button" type = "submit" primary={true}>Добавить коментарий</RaisedButton>
+           <RaisedButton className = "button" type = "submit" primary={true}><LocalizedText>add_comment</LocalizedText></RaisedButton>
        </div>
       </form>
     )
