@@ -18,3 +18,7 @@ export const SUCCESS = '_SUCCESS'
 export const FAIL    = '_FAIL'
 
 export const LOAD_COMMENTS = 'LOAD_COMMENTS'
+
+export const LOAD_COMMENTS_PAGE = 'LOAD_COMMENTS_PAGE'
+
+export const SUBMIT_FORM = 'SUBMIT_FORM'

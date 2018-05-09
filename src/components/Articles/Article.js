@@ -2,13 +2,14 @@ import React, { Component, PureComponent } from 'react'
 import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import CommentList from './CommentList'
+import CommentList from '../Comments/CommentList'
 import { CSSTransitionGroup } from 'react-transition-group'
-import { deleteArticle } from '../AC'
-import { loadArticle } from '../AC'
-import Loader from './Loader'
-import '../css/animation.css'
+import { deleteArticle } from '../../AC/index'
+import { loadArticle } from '../../AC/index'
+import Loader from '../Loader'
+import '../../css/animation.css'
 
+import ArticleHeader from './ArticleHeader'
 
 class Article extends PureComponent {
     static propTypes = {
@@ -34,12 +35,7 @@ class Article extends PureComponent {
         return (
             <div className="article" ref = {this.setContainerRef}>
                 <h2 className="article-title">{ article.title }</h2>
-                <button className="article-button left" onClick = { toggleOpen }>
-                    { isOpen ? 'close' : 'open' }
-                </button>
-                <button className="article-button right" onClick = { this.handleDelete }>
-                   Delete
-                </button>
+                <ArticleHeader className = "article-options" handleDelete = { this.handleDelete }/>
                 <CSSTransitionGroup
                     transitionName = 'article'
                     transitionEnterTimeout = { 300 }
@@ -65,7 +61,6 @@ class Article extends PureComponent {
         if (article.loading) return <Loader/>
         return (
             <section className="article-text">
-                  <button onClick = {() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
                { article.text }
                <CommentList article = { article } ref = {this.setCommentsRef} key = {this.state.updateIndex}/>
             </section>

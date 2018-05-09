@@ -28,13 +28,13 @@ class MySelect extends Component {
         }))
 
         return (
-        <div>
+        <div className="alt-select">
             <Select
-            options={options}
-            value={selected}
-            multi={true}
-            onChange={this.handleChange}
-        />
+                options={options}
+                value={selected}
+                multi={true}
+                onChange={this.handleChange}
+            />
         </div>
         )
     }

@@ -1,4 +1,3 @@
-import { normalizedArticles as defaultArticles } from '../fixtures'
 import { DELETE_ARTICLE, ADD_COMMENT, LOAD_ALL_ARTICLES, START, SUCCESS, LOAD_ARTICLE, LOAD_COMMENTS } from '../constance'
 import { arrToMap } from '../helpers'
 import { Record, OrderedMap } from 'immutable'
@@ -32,10 +31,14 @@ export default (articlesState = defaultState, action) => {
             return articlesState.updateIn(
                 [
                     'entities',
-                     payload.articleId, 
+                     payload.articleId,
                      'comments'
                 ], 
-                     comments =>  comments.concat(randomId))
+                     comments => {
+                         comments.unshift(randomId)
+
+                         return comments.concat(randomId)
+                     })
 
         case LOAD_ALL_ARTICLES + START:
                 return articlesState.set('loading', true)

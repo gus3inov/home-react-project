@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { inputFilter } from '../../AC'
 import { connect } from 'react-redux'
 import { mapToArr } from '../../helpers'
+import TextField from 'material-ui/TextField'
 
 class MyInput extends Component {
   static propTypes = {
@@ -12,7 +12,7 @@ class MyInput extends Component {
   render() {
     return (
       <div className="article-search">
-        <input placeholder="Search" className="article-search__input" type="text"  onChange={ this.handleUserChange }/>
+        <TextField placeholder="Search" className="article-search__input" type="text"  onChange={ this.handleUserChange }/>
       </div>
     )
   }

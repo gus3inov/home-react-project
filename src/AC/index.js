@@ -12,8 +12,12 @@ import {
     START,
     FAIL,
     SUCCESS,
-    LOAD_COMMENTS
+    LOAD_COMMENTS,
+    LOAD_COMMENTS_PAGE,
+    SUBMIT_FORM
     } from '../constance'
+
+import {push} from 'react-router-redux'
 
 export function increment (){
     return {
@@ -62,10 +66,32 @@ export function inputFilter ( title = '') {
 }
 
 export function addComment(comment, articleId) {
-    return {
-        type: ADD_COMMENT,
-        payload: { comment, articleId },
-        generateId: true
+    return dispatch => {
+        dispatch({
+            type: ADD_COMMENT,
+            payload: {comment, articleId},
+            generateId: true
+        })
+
+        fetch('api/comment', {
+            method: 'POST',
+            body: comment
+        }).then((response) => {
+
+            if (!response.ok) {
+                throw Error(response.statusText)
+            }
+
+            console.log(response)
+
+            dispatch({
+                type: ADD_COMMENT,
+                payload: {comment, articleId},
+                generateId: true
+            })
+        }).catch(err => {
+            console.error(err)
+        })
     }
 }
 
@@ -83,17 +109,24 @@ export function loadArticle(id){
             payload: { id }
         })
 
-        setTimeout(()=>{
             fetch(`/api/article/${id}`)
-                .then(res => res.json())
+                .then(res => {
+                    if(res.status >= 400){
+                        throw new Error(res.statusText)
+                    }
+
+                    return res.json()
+                })
                 .then(response => dispatch({
                     type: LOAD_ARTICLE + SUCCESS,
                     payload: { id, response }
                 }))
-                .catch(error => dispatch({
+                .catch(error => {
+                    dispatch({
                     type: LOAD_ARTICLE + FAIL,
                     payload: { id, error }
-                }))
+                })
+            dispatch(push('/error'))
         })
     }
 }
@@ -104,11 +137,41 @@ export function loadComments (id){
         payload: { id },
         callAPI: `/api/comment?article=${id}`
     }
+
 }
 
-// export function loadArticle(id){
-//     return {
-//         type: LOAD_ARTICLE,
-//         callAPI: `/api/article/${id}`
-//     }
-// }
+export function checkAndLoadCommentsForPage(offset){
+    return (dispatch, getState) => {
+        const {comments: {pagination}} = getState()
+        if (pagination.getIn([offset, 'loading']) || pagination.getIn([offset, 'ids'])) return
+
+        dispatch({
+            type: LOAD_COMMENTS_PAGE,
+            payload: { offset },
+            callAPI: `/api/comment?limit=5&offset=${(offset - 1) * 5}`
+        })
+    }
+}
+
+export function submitForm (value){
+   return dispatch => {
+        fetch('api/contact', {
+            method: 'POST',
+            body: value
+        }).then((response) => {
+
+            if(!response.ok){
+                throw Error(response.statusText)
+            }
+
+            console.log(response)
+
+            dispatch({
+                type: SUBMIT_FORM,
+                payload: value
+            })
+        }).catch(err => {
+            console.error(err)
+        })
+    }
+}

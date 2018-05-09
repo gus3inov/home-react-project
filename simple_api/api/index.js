@@ -27,6 +27,8 @@ router.post('/article', function (req, res, next) {
     var body = req.body;
     var article = {
         text: body.text,
+        img: body.img,
+        author: body.author,
         id: Date.now().toString(),
         user: body.user,
         date: new Date()
@@ -55,6 +57,19 @@ router.get('/comment', function (req, res, next) {
         records: mocks.comments.slice(offset, limit + offset)
     })
 });
+
+router.post('/contact', function (req, res, next) {
+    const { body } = req;
+
+    let user = {
+        firstName: body.firstName,
+        lastName: body.lastName,
+        email: body.email
+    };
+
+    mocks.user.push(user);
+    res.json(user);
+})
 
 router.post('/comment', function (req, res, next) {
     var comment = {

@@ -1,11 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import CircularProgress from 'material-ui/CircularProgress';
 
 const Loader = () => {
   return (
-    <div>
-        <h2>Loading...</h2>
-    </div>
+      <div className="alt-loader">
+          <CircularProgress size={80} thickness={5} />
+      </div>
   )
 }
 
