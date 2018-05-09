@@ -17,17 +17,17 @@ module.exports = {
         }],
         historyApiFallback: true
     },
-    module: {
-        loaders: [
-            {
-                test: /\.(js|jsx)$/,                
-                loaders: ['babel-loader'],
-                include: path.join(__dirname, 'src')
-            },
-            {
-                test: /\.css/,
-                loaders: ['style-loader', 'css-loader'],
-            }
-        ]
-    }
+        module: {
+            loaders: [
+                {
+                    test: /\.(js|jsx)$/,
+                    loaders: ['babel-loader'],
+                    include: path.join(__dirname, 'src')
+                },
+                {
+                    test: /\.css/,
+                    loaders: ['style-loader', 'css-loader'],
+                }
+            ]
+        }
 }

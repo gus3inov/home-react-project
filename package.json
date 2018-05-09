@@ -46,6 +46,7 @@
     "react-day-picker": "^6.0.3",
     "react-dom": "^15.5.0",
     "react-moment": "^0.6.8",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "^5.0.0-alpha.6",

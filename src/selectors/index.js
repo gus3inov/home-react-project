@@ -9,7 +9,7 @@ const idGetter = (state, props) => props.id
 
 export const filtrateArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters)=> {
     const { selected, dateRange: {from, to} } = filters
-   
+        console.log(selected)
         return mapToArr(articles).filter(article => {
             const published = Date.parse(article.date)
             return (!selected.length || selected.includes(article.id)) &&
